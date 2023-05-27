@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   return (
-    <nav>
+    <nav className="flex justify-around bg-blue-500 text-white p-4">
       <NavLink to="/" className={({ isActive }) => (isActive ? "active" : "")}>Home</NavLink>
       <NavLink to="/properties" className={({ isActive }) => (isActive ? "active" : "")}>Properties</NavLink>
       <NavLink to="/contact" className={({ isActive }) => (isActive ? "active" : "")}>Contact</NavLink>
