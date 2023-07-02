@@ -1,0 +1,139 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Typography'
+
+block page 
+	// Page Header
+	include ../sections/_header-corporate
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Base typography  
+	section.section.section-sm.section-first
+		.container
+			.row.row-50
+				.col-xl-8
+					ul.list-xl
+						li
+							h1 H1 Heading
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+
+						li
+							h2 H2 Heading
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+
+						li
+							h3 H3 Heading
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+
+						li
+							h4 H4 Heading
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+
+						li
+							h5 H5 Heading
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+						li
+							h6 H6 Heading
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+
+	// Blockquote
+	section.section.section-sm
+		.container
+			.row.row-50
+				.col-lg-10.col-xl-8
+					h6 Blockquote
+					// Quote Light
+					blockquote.quote-light
+						+quote-mark.quote-light-mark
+						.quote-light-text
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+
+	// HTML Text Elements 
+	section.section.section-sm
+		.container
+			.row
+				.col-lg-10.col-xl-8
+					h6 HTML Text Elements
+					p.text-block
+						a(href='#') Text Link
+						a(href='#').link-hover Hover link
+						span.font-weight-bold Bold text
+						mark This is a highlighted text
+						span.tooltip-custom(data-toggle='tooltip' data-placement='top' title='Tooltips text') Tooltips
+						span Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+						span Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+						span.text-strike Strikethrough text
+						span.text-underline Underlined text
+
+	// Unordered List
+	section.section.section-sm
+		.container
+			.row.row-50
+				.col-lg-10.col-xl-8
+					h6 Unordered List
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+					ul.list-marked
+						li Lorem ipsum dolor
+						li Lorem ipsum dolor
+						li Lorem ipsum dolor
+						li Lorem ipsum dolor
+						li Lorem ipsum dolor
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+
+	// Ordered List
+	section.section.section-sm
+		.container
+			.row.row-50
+				.col-lg-10.col-xl-8
+					h6 Ordered List
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+					ol.list-ordered
+						li Lorem ipsum dolor
+						li Lorem ipsum dolor
+						li Lorem ipsum dolor
+						li Lorem ipsum dolor
+						li Lorem ipsum dolor
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	// Centered image
+	section.section.section-sm
+		.container
+			.row
+				.col-lg-10.col-xl-8
+					h6 Centered image
+					figure.figure-light
+						+jpg('typography-1-770x456', 'img-centered')
+						figcaption: p Lorem ipsum
+
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+
+	// Left aligned image
+	section.section.section-sm
+		.container: .row: .col-lg-10.col-xl-8
+			h6 Left aligned image
+			.row.row-30
+				.col-md-6: +jpg('typography-2-770x456')
+				.col-md-6: p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+
+	// Right aligned image
+	section.section.section-sm.section-last
+		.container: .row: .col-lg-10.col-xl-8
+			h6 Right aligned image
+			.row.row-30.flex-md-row-reverse
+				.col-md-6: +jpg('typography-3-770x456')
+				.col-md-6: p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+	// Page Footer
+	include ../sections/_footer-advanced
+	+footer-advanced({
+		about: 'inHouse is the largest full-service real estate and property management company. We offer expertise in the marketing and sale of a wide range of properties, including residential real estate, farms and lifestyle blocks, as well as commercial and industrial properties that we hope may interest you.',
+		posts: [
+			'Real Estate Guide: 7 Important Tips for Buying a Home',
+			'Single-Family Homes as a Housing Option for Young Families'
+		]
+	})

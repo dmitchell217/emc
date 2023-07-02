@@ -1,0 +1,101 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-career-classic
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Single Job'
+
+block page 
+	// Page Header
+	include ../sections/_header-corporate
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// A Few Words About Us
+	section.section.section-lg
+		.container
+			.row.row-50.justify-content-center.justify-content-lg-between.align-items-center.align-items-xl-start
+				.col-md-10.col-lg-6.col-xl-5
+					h3 Residential Broker
+					// Bootstrap tabs
+					#tabs-1.tabs-custom.tabs-horizontal.tabs-line
+						// Nav tabs
+						ul.nav.nav-tabs
+							li.nav-item(role='presentation'): a.nav-link.active(href='#tabs-1-1' data-toggle='tab') Description
+							li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-2' data-toggle='tab') Demands
+							li.nav-item(role='presentation'): a.nav-link(href='#tabs-1-3' data-toggle='tab') Conditions
+
+						// Tab panes
+						.tab-content
+							div#tabs-1-1.tab-pane.fade.show.active
+								p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+								p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec et odio pellentesque diam.
+
+							div#tabs-1-2.tab-pane.fade
+								ul.list-marked
+									li Lorem ipsum dolor sit amet, consectetur adipiscing elit
+									li Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+									li Lorem ipsum dolor sit amet, consectetur adipiscing elit
+
+							div#tabs-1-3.tab-pane.fade
+								ul.list-marked
+									li Lorem ipsum dolor sit amet, consectetur
+									li Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  dolore magna aliqua.
+									li Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt magna aliqua.
+
+					a.button.button-primary.button-winona(href='#') Send Your CV
+
+				.col-md-10.col-lg-6
+					+jpg('single-job-1-570x400', 'img-responsive')
+
+	// Current Job Positions
+	section.section.section-lg.bg-gray-100.text-center
+		.container
+			h3 Current Job Positions
+			.row.row-45
+				.col-md-6.col-lg-4
+					+career-classic({
+						title: 'Real Estate Agent',
+						list: [
+							{iconClass: 'mdi mdi-calendar-clock', text: 'Full Time'},
+							{iconClass: 'mdi mdi-map-marker', text: 'San Diego'}
+						]
+					})
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec et odio pellentesque diam.
+
+				.col-md-6.col-lg-4
+					+career-classic({
+						title: 'Property Manager',
+						list: [
+							{iconClass: 'mdi mdi-calendar-clock', text: 'Full Time'},
+							{iconClass: 'mdi mdi-map-marker', text: 'San Diego'}
+						]
+					})
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec et odio pellentesque diam.
+
+				.col-md-6.col-lg-4
+					+career-classic({
+						title: 'Leasing Consultant',
+						list: [
+							{iconClass: 'mdi mdi-calendar-clock', text: 'Full Time'},
+							{iconClass: 'mdi mdi-map-marker', text: 'San Diego'}
+						]
+					})
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec et odio pellentesque diam.
+
+			a.button.button-lg.button-primary.button-winona(href='careers.html') Join Us
+
+	// Page Footer
+	include ../sections/_footer-advanced
+	+footer-advanced({
+		about: 'inHouse is the largest full-service real estate and property management company. We offer expertise in the marketing and sale of a wide range of properties, including residential real estate, farms and lifestyle blocks, as well as commercial and industrial properties that we hope may interest you.',
+		posts: [
+			'Real Estate Guide: 7 Important Tips for Buying a Home',
+			'Single-Family Homes as a Housing Option for Young Families'
+		]
+	})

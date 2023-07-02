@@ -1,0 +1,93 @@
+-
+	var
+		htmlClass = "wide wow-animation",
+		fonts = "//fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800%7CPoppins:300,400,700",
+		navbarCounter = 0,
+		logo = {
+			name: 'CaseCraft',
+			default: { trueSize: 'logo-default-151x44', retina: 'logo-default-151x44' },
+			inverse: { trueSize: 'logo-inverse-151x44', retina: 'logo-inverse-151x44' },
+			light: { trueSize: 'logo-light-115x34', retina: 'logo-light-115x34' }
+		},
+		links = {
+			post: 'single-blog-post.html',
+			getTemplate: 'https://themeforest.net/item/casecraft-elegant-business-and-financial-company-multipage-html-template/21536362'
+		},
+		colors = {
+			primary: '#4854ed'
+		},
+		menu = [
+			{
+				title: 'Home',
+				category: 'home',  
+				link: 'index.html'
+			},
+			{
+				title: 'About us',
+				category: 'about us',
+				link: 'about-us.html',
+				dropdown: [
+					{ title: 'Our Team' },
+					{ title: 'Testimonials' }
+				]
+			},
+			{
+				title: 'Properties',
+				category: 'properties',
+				link: 'properties.html',
+				dropdown: [
+					{ title: 'Single Property' }
+				]
+			},
+			{
+				title: 'Blog',
+				category: 'blog',
+				link: '#',
+				dropdown: [
+					{ title: 'Grid Blog' },
+					{ title: 'Sidebar Blog' },
+					{ title: 'Single Blog Post'},
+					{ title: 'Blog Layouts' }
+				] 
+			},
+			{
+				title: 'Pages',
+				category: 'pages',
+				link: '#',
+					megamenu: [
+					{
+						list: [
+							{ title: 'Typography' },
+							{ title: 'Buttons' },
+							{ title: 'Forms' },
+							{ title: 'Progress bars' },
+							{ title: 'Tabs' },
+							{ title: 'Tables' },
+							{ title: 'Accordions' }
+						]
+					},
+					{
+						list: [
+							{ title: 'Small Features' },
+							{ title: 'Large Features' },
+							{ title: 'Careers' },
+							{ title: 'Search results' },
+							{ title: 'Single Job' }
+						]
+					},
+					{
+						list: [
+							{ title: '404 Page' },
+							{ title: '503 Page' },
+							{ title: 'Coming Soon' },
+							{ title: 'Privacy policy' },
+							{ title: 'Under Construction' }
+						]
+					}
+				]
+			},
+			{
+				title: 'Contacts',
+				category: 'contacts'
+			}
+		];

@@ -1,0 +1,41 @@
+include ../components/_ui-progress-bar-linear
+	
+section.section.bg-gray-100
+	.range.justify-content-xl-between
+		.cell-lg-6.cell-xl-5.align-self-center.container
+			.row
+				.col-md-10.cell-inner: .section-lg.inset-right-2
+					h3.wow-outer: span.wow.slideInDown A Few Words About Us
+					p.wow.fadeIn Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec et odio pellentesque diam. Tortor pretium viverra suspendisse.
+					
+					.progress-linear-outer.wow-outer
+						+progress-bar-linear({
+							title: 'Dedication',
+							valueTo: '90'
+						}).wow.slideInDown(data-wow-delay='.05s')
+						
+					.progress-linear-outer.wow-outer
+						+progress-bar-linear({
+							title: 'Knowledge',
+							valueTo: '65'
+						}).wow.slideInDown(data-wow-delay='.1s')
+						
+					.progress-linear-outer.wow-outer
+						+progress-bar-linear({
+							title: 'Professionalism',
+							valueTo: '100'
+						}).wow.slideInDown(data-wow-delay='.15s')
+					
+					.progress-linear-outer.wow-outer
+						+progress-bar-linear({
+							title: 'Expertise',
+							valueTo: '75'
+						}).wow.slideInDown(data-wow-delay='.2s')
+
+					.wow-outer.button-outer
+						a.button.button-primary.button-winona.wow.slideInUp(href='about-us.html') Learn more
+
+		.cell-lg-6.height-fill
+			.figure-card
+				.figure-card-sizer
+				+jpg('large-features-4-1214x792')

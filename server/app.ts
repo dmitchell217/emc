@@ -12,7 +12,7 @@ const cors = require('cors');
 setDefaultConnection('db1');
 
 // The port the express app will listen on
-const port: number = process.env.PORT ? parseInt(process.env.PORT) : 3001;
+const port: number = process.env.PORT ? parseInt(process.env.PORT) : 4000;
 
 app.use(cors())
 

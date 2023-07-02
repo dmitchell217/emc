@@ -1,0 +1,110 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-career-classic
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Careers'
+
+block page 
+	// Page Header
+	include ../sections/_header-corporate
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Working at CaseCraft
+	section.section.section-lg
+		.container
+			.row.row-50.justify-content-center.justify-content-lg-between.flex-lg-row-reverse
+				.col-md-10.col-lg-6.col-xl-5
+					h3 Working at inHouse
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec et odio pellentesque diam. Tortor pretium viverra suspendisse potenti nullam ac tortor vitae. Tellus elementum sagittis vitae et leo duis ut diam. Vitae ultricies leo integer malesuada nunc vel risus.
+					a.button.button-lg.button-primary.button-winona(href='about-us.html') Learn more
+
+				.col-md-10.col-lg-6.col-xl-6
+					+jpg('careers-1-570x368', 'img-responsive')
+
+	// Available Vacancies
+	section.section.section-lg.bg-gray-100.text-center
+		.container
+			h3 Available Vacancies
+			.row.row-45
+				.col-md-6.col-lg-4
+					+career-classic({
+						title: 'Residential Broker',
+						list: [
+							{ iconClass: 'mdi mdi-calendar-clock', text: 'Full Time' },
+							{ iconClass: 'mdi mdi-map-marker', text: 'San Diego' }
+						]
+					})
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+				.col-md-6.col-lg-4
+					+career-classic({
+						title: 'Residential Appraiser',
+						list: [
+							{iconClass: 'mdi mdi-calendar-clock', text: 'Full Time'},
+							{iconClass: 'mdi mdi-map-marker', text: 'San Diego'}
+						]
+					})
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+				.col-md-6.col-lg-4
+					+career-classic({
+						title: 'Real Estate Agent',
+						list: [
+							{iconClass: 'mdi mdi-calendar-clock', text: 'Full Time'},
+							{iconClass: 'mdi mdi-map-marker', text: 'San Diego'}
+						]
+					})
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+				.col-md-6.col-lg-4
+					+career-classic({
+						title: 'Property Manager',
+						list: [
+							{iconClass: 'mdi mdi-calendar-clock', text: 'Full Time'},
+							{iconClass: 'mdi mdi-map-marker', text: 'San Diego'}
+						]
+					})
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+				.col-md-6.col-lg-4
+					+career-classic({
+						title: 'Leasing Consultant',
+						list: [
+							{iconClass: 'mdi mdi-calendar-clock', text: 'Full Time'},
+							{iconClass: 'mdi mdi-map-marker', text: 'San Diego'}
+						]
+					})
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+				.col-md-6.col-lg-4
+					+career-classic({
+						title: 'Commercial Broker',
+						list: [
+							{iconClass: 'mdi mdi-calendar-clock', text: 'Full Time'},
+							{iconClass: 'mdi mdi-map-marker', text: 'San Diego'}
+						]
+					})
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+
+			a.button.button-lg.button-primary.button-winona(href='#') Join Us
+
+	// Thin CTA
+	include ../sections/_section-thin-cta
+
+	// Page Footer
+	include ../sections/_footer-advanced
+	+footer-advanced({
+		about: 'inHouse is the largest full-service real estate and property management company. We offer expertise in the marketing and sale of a wide range of properties, including residential real estate, farms and lifestyle blocks, as well as commercial and industrial properties that we hope may interest you.',
+		posts: [
+			'Real Estate Guide: 7 Important Tips for Buying a Home',
+			'Single-Family Homes as a Housing Option for Young Families'
+		]
+	})

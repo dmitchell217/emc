@@ -1,0 +1,154 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'properties'
+	- var pageName = 'Properties'
+
+block page 
+	// Page Header
+	include ../sections/_header-corporate
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	section.bg-gray-100.section-md
+		.container
+			form
+				.form-wrap.form-wrap-select.wow.fadeInLeftSmall(data-wow-delay='.3s')
+					.row.row-20.justify-content-md-center
+						// Select 2
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							select.form-input.select(name='find-job-location' data-minimum-results-for-search="Infinity" )
+								option(value='1') All Property Types
+								option(value='2') Residential
+								option(value='3') Commercial
+								option(value='4') Vacant Land
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							select.form-input.select(name='find-job-location' data-minimum-results-for-search="Infinity" )
+								option(value='1') All States
+								option(value='2') New York
+								option(value='3') Washington
+								option(value='4') Georgia
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							select.form-input.select(name='find-job-location' data-minimum-results-for-search="Infinity" )
+								option(value='1') All Cities
+								option(value='2') New York
+								option(value='3') Seattle
+								option(value='4') Atlanta
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							select.form-input.select(name='find-job-location' data-minimum-results-for-search="Infinity" )
+								option(value='1') All Listing Types
+								option(value='2') Exclusive Right to Sell
+								option(value='3') Exclusive Agency
+								option(value='4') Open Agency
+						// Select 2
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							select.form-input.select(name='find-job-location' data-minimum-results-for-search="Infinity" )
+								option(value='1') All Bedrooms
+								option(value='2') Master Bedrooms
+								option(value='3') Guest Bedrooms
+								option(value='4') Teen Bedrooms
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							.rd-range(data-min="0" data-max="350" data-start="[50, 250]" data-step="1" data-tooltip="false" data-min-diff="50" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2")
+							.rd-range-wrap
+								.rd-range-form-wrap
+									input.rd-range-input.rd-range-input-value-1(type="text" name="value-1")
+									span SqFt
+								span.price-devider -
+								.rd-range-form-wrap
+									input.rd-range-input.rd-range-input-value-2(type="text" name="value-2")
+									span SqFt
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							.rd-range(data-min="0" data-max="350" data-start="[50, 250]" data-step="1" data-tooltip="false" data-min-diff="50" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2")
+							.rd-range-wrap
+								.rd-range-form-wrap
+									span $
+									input.rd-range-input.rd-range-input-value-1(type="text" name="value-1")
+								span.price-devider -
+								.rd-range-form-wrap
+									span $
+									input.rd-range-input.rd-range-input-value-2(type="text" name="value-2")
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							a.button.button-md.button-primary.button-winona.form-btn.wow.slideInDown(href='#' data-wow-delay='.4s') Search
+	section.section.section-md.text-center
+		.container
+			h3.text-uppercase.font-weight-bold.wow-outer: span.wow.slideInDown Popular properties
+			.row.row-50.offset-top-2
+				.col-md-6.wow-outer
+					// Post Modern
+					article.post-modern.wow.slideInLeft
+						a.post-modern-media(href=links.post): +jpg('grid-blog-1-571x353')
+						h4.post-modern-title: a(href=links.post).post-modern-title 5619 Walnut Hill Ln, Dallas, TX 75229
+						ul.post-modern-meta
+							li: a.button-winona(href='#') $1500/mon
+							li 30 Sq. Ft.
+							li 3 Bedrooms
+						p A comfortable residential property located in a quiet and cozy area.
+
+				.col-md-6.wow-outer
+					// Post Modern
+					article.post-modern.wow.slideInLeft
+						a.post-modern-media(href=links.post): +jpg('grid-blog-2-571x353')
+						h4.post-modern-title: a(href=links.post).post-modern-title 1808 Bolingbroke Pl, Fort Worth, TX 76140
+						ul.post-modern-meta
+							li: a.button-winona(href='#') $1300/mon
+							li 40 Sq. Ft.
+							li 2 Bedrooms
+						p Perfect for those who love both city life and the countryside.
+
+
+				.col-md-6.wow-outer
+					// Post Modern
+					article.post-modern.wow.slideInLeft
+						a.post-modern-media(href=links.post): +jpg('grid-blog-3-571x353')
+						h4.post-modern-title: a(href=links.post).post-modern-title 924 Bel Air Rd, Los Angeles, CA 90077
+						ul.post-modern-meta
+							li: a.button-winona(href='#') 1800/mon
+							li 50 Sq. Ft.
+							li 4 Bedrooms
+						p Located in 5 mins from downtown, this property is great for anyone.
+
+				.col-md-6.wow-outer
+					// Post Modern
+					article.post-modern.wow.slideInLeft
+						a.post-modern-media(href=links.post): +jpg('grid-blog-4-571x353')
+						h4.post-modern-title: a(href=links.post).post-modern-title 13510 W Cheery Lynn Rd, Avondale, AZ 85392
+						ul.post-modern-meta
+							li: a.button-winona(href='#') $2700/mon
+							li 90 Sq. Ft.
+							li 2 Bedrooms
+						p A luxury mansion for people who enjoy the high-end amenities.
+
+				.col-md-6.wow-outer
+					// Post Modern
+					article.post-modern.wow.slideInLeft
+						a.post-modern-media(href=links.post): +jpg('grid-blog-5-571x353')
+						h4.post-modern-title: a(href=links.post).post-modern-title 12043 33rd Ave NE, Seattle, WA 98125
+						ul.post-modern-meta
+							li: a.button-winona(href='#') 1250/mon
+							li 35 Sq. Ft.
+							li 3 Bedrooms
+						p A great investment for a small family looking for a cozy house.
+
+				.col-md-6.wow-outer
+					// Post Modern
+					article.post-modern.wow.slideInLeft
+						a.post-modern-media(href=links.post): +jpg('grid-blog-6-571x353')
+						h4.post-modern-title: a(href=links.post).post-modern-title 1550 Olympian Cir SW # 3, Atlanta, GA 30310
+						ul.post-modern-meta
+							li: a.button-winona(href='#') $1620/mon
+							li 45 Sq. Ft.
+							li 2 Bedrooms
+						p A great property with a beautiful backyard and lots of amenities.
+
+	// Page Footer
+	include ../sections/_footer-advanced
+	+footer-advanced({
+		about: 'inHouse is the largest full-service real estate and property management company. We offer expertise in the marketing and sale of a wide range of properties, including residential real estate, farms and lifestyle blocks, as well as commercial and industrial properties that we hope may interest you.',
+		posts: [
+			'Real Estate Guide: 7 Important Tips for Buying a Home',
+			'Single-Family Homes as a Housing Option for Young Families'
+		]
+	})

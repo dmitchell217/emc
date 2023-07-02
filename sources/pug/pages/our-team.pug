@@ -1,0 +1,86 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'about us'
+	- var pageName = 'Our team'
+
+block page
+	// Page Header
+	include ../sections/_header-corporate
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+
+	section.section.section-lg.text-center
+		.container
+			h3.text-uppercase.wow-outer: span.wow.slideInUp Our Team
+			.row.row-50.row-xxl-70.justify-content-center.justify-content-lg-start
+				.col-md-10.col-lg-6.wow-outer
+					// Profile Creative
+					article.profile-creative.wow.slideInLeft
+						figure.profile-creative-figure: +jpg('team-1-270x273', 'profile-creative-image')
+						.profile-creative-main
+							h5.profile-creative-title: a(href='#') Nathalie Porter
+							p.profile-creative-position Founder, Broker
+							.profile-creative-contacts
+								.object-inline
+									span.icon.icon-md.mdi.mdi-phone
+									a(href='tel:#') 1-800-1324-567
+							p Ms. Porter founded our company in 1989 with a vision to help guests and residents of the USA to easily find and buy or rent real estate in all 50 states.
+
+				.col-md-10.col-lg-6.wow-outer
+					// Profile Creative
+					article.profile-creative.wow.slideInLeft(data-wow-delay='.2s')
+						figure.profile-creative-figure: +jpg('team-2-270x273', 'profile-creative-image')
+						.profile-creative-main
+							h5.profile-creative-title: a(href='#') John Thompson
+							p.profile-creative-position Sales Associate
+							.profile-creative-contacts
+								.object-inline
+									span.icon.icon-md.mdi.mdi-phone
+									a(href='tel:#') 1-800-1324-567
+							p John has been in sales and marketing for the past 15 years. He has excellent knowledge about the local market both residential and commercial.
+
+				.col-md-10.col-lg-6.wow-outer
+					// Profile Creative
+					article.profile-creative.wow.slideInLeft
+						figure.profile-creative-figure: +jpg('team-3-270x273', 'profile-creative-image')
+						.profile-creative-main
+							h5.profile-creative-title: a(href='#') Brian Payne
+							p.profile-creative-position Realtor
+							.profile-creative-contacts
+								.object-inline
+									span.icon.icon-md.mdi.mdi-phone
+									a(href='tel:#') 1-800-1324-567
+							p Brian is not only a Licensed Realtor but also holds the Title Producers and Mortgage Licenses, which makes him a very knowledgeable real estate expert.
+
+				.col-md-10.col-lg-6.wow-outer
+					// Profile Creative
+					article.profile-creative.wow.slideInLeft(data-wow-delay='.2s')
+						figure.profile-creative-figure: +jpg('team-4-270x273', 'profile-creative-image')
+						.profile-creative-main
+							h5.profile-creative-title: a(href='#') Marie Fernandez
+							p.profile-creative-position Broker
+							.profile-creative-contacts
+								.object-inline
+									span.icon.icon-md.mdi.mdi-phone
+									a(href='tel:#') 1-800-1324-567
+							p Marie’s goal is to provide clients with the highest level of marketing expertise and customer service to help them reach their uppermost real estate goals.
+
+
+	// Page Footer
+	include ../sections/_footer-advanced
+
+	include ../sections/_section-contact-form-and-map
+
+	include ../sections/_section-contact-info
+	+footer-advanced({
+		about: 'inHouse is the largest full-service real estate and property management company. We offer expertise in the marketing and sale of a wide range of properties, including residential real estate, farms and lifestyle blocks, as well as commercial and industrial properties that we hope may interest you.',
+		posts: [
+			'Real Estate Guide: 7 Important Tips for Buying a Home',
+			'Single-Family Homes as a Housing Option for Young Families'
+		]
+	})

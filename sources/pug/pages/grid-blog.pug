@@ -1,0 +1,81 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'blog'
+	- var pageName = 'Grid Blog'
+
+block page 
+	// Page Header
+	include ../sections/_header-corporate
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+	
+	section.section.section-lg
+		.container
+			.row.row-50.row-xxl-70
+				.col-md-6.scaleFadeInWrap
+					// Post Modern
+					.wow.scaleFadeIn
+						article.post-modern
+							a.post-modern-media(href=links.post): +jpg('grid-blog-1-571x353')
+							h4.post-modern-title: a(href=links.post).post-modern-title 7 Important Tips for Buying a Home
+							ul.post-modern-meta
+								li by Mike Barnes
+								li: time(datetime='2018') Apr 21, 2018 at 12:05 pm
+								li: a.button-winona(href='#') News
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+
+				.col-md-6.scaleFadeInWrap
+					// Post Modern
+					.wow.scaleFadeIn(data-wow-delay='.1s')
+						article.post-modern 
+							a.post-modern-media(href=links.post): +jpg('grid-blog-2-571x353')
+							h4.post-modern-title: a(href=links.post).post-modern-title Useful Habits for Potential Home Buyers
+							ul.post-modern-meta
+								li by Mike Barnes
+								li: time(datetime='2018') Apr 21, 2018 at 12:05 pm
+								li: a.button-winona(href='#') Real Estate
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+						
+				.col-md-6.scaleFadeInWrap
+					// Post Modern
+					.wow.scaleFadeIn
+						article.post-modern
+							a.post-modern-media(href=links.post): +jpg('grid-blog-3-571x353')
+							h4.post-modern-title: a(href=links.post).post-modern-title 7 Signs Your Home Will Have Good Resale Value
+							ul.post-modern-meta
+								li by Mike Barnes
+								li: time(datetime='2018') Apr 21, 2018 at 12:05 pm
+								li: a.button-winona(href='#') News
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+
+				.col-md-6.scaleFadeInWrap
+					// Post Modern
+					.wow.scaleFadeIn(data-wow-delay='.1s')
+						article.post-modern
+							a.post-modern-media(href=links.post): +jpg('grid-blog-4-571x353')
+							h4.post-modern-title: a(href=links.post).post-modern-title Single-Family Homes as a Housing Option
+							ul.post-modern-meta
+								li by Mike Barnes
+								li: time(datetime='2018') Apr 21, 2018 at 12:05 pm
+								li: a.button-winona(href='#') Real Estate
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+						
+			.pagination
+				.page-item.active: a.page-link.button-winona(href='#') 1
+				.page-item: a.page-link.button-winona(href='#') 2
+				.page-item: a.page-link.button-winona(href='#') 3
+				.page-item: a.page-link.button-winona(href='#') 4
+				
+	// Page Footer
+	include ../sections/_footer-advanced
+	+footer-advanced({
+		about: 'inHouse is the largest full-service real estate and property management company. We offer expertise in the marketing and sale of a wide range of properties, including residential real estate, farms and lifestyle blocks, as well as commercial and industrial properties that we hope may interest you.',
+		posts: [
+			'Real Estate Guide: 7 Important Tips for Buying a Home',
+			'Single-Family Homes as a Housing Option for Young Families'
+		]
+	})

@@ -1,0 +1,54 @@
+extends  ../_skeleton
+
+//- Includes
+
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Large Features'
+
+block page 
+	// Page Header
+	include ../sections/_header-corporate
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Overview
+	include ../sections/_section-about-1
+	
+	// A Few Words About Us
+	include ../sections/_section-about-2
+
+	// A Few Words About Us
+	include ../sections/_section-about-3
+		
+	// A Few Words About Us
+	include ../sections/_section-about-4
+				
+	// A Few Words About Us
+	include ../sections/_section-about-5
+							
+	// Our History
+	include ../sections/_section-our-history
+
+	// Profile
+	include ../sections/_section-profile
+
+	// Careers
+	include ../sections/_section-careers
+
+	// Partners
+	include ../sections/_section-partners
+
+	// Page Footer
+	include ../sections/_footer-advanced
+	+footer-advanced({
+		about: 'inHouse is the largest full-service real estate and property management company. We offer expertise in the marketing and sale of a wide range of properties, including residential real estate, farms and lifestyle blocks, as well as commercial and industrial properties that we hope may interest you.',
+		posts: [
+			'Real Estate Guide: 7 Important Tips for Buying a Home',
+			'Single-Family Homes as a Housing Option for Young Families'
+		]
+	})

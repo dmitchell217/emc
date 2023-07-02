@@ -1,0 +1,42 @@
+include ../components/_ui-card
+	
+.row.row-50.justify-content-lg-between.flex-lg-row-reverse.offset-top-1
+	.col-lg-7.col-xl-6
+		h3.wow-outer: span.wow.slideInDown Frequently Asked Questions
+		// Bootstrap collapse
+		#accordion2.card-group-custom.card-group-corporate.wow-outer(role='tablist' aria-multiselectable='false')
+			+card({
+				show: true,
+				cardClass: 'card-corporate',
+				parentId: 'accordion2',
+				number: '1',
+				header: 'What are the advantages of purchasing a website template?'
+			}).wow.fadeInDown(data-wow-delay='.05s')
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+
+			+card({
+				cardClass: 'card-corporate',
+				parentId: 'accordion2',
+				number: '2',
+				header: 'Do you provide any scripts with your templates or could you do some custom programming?'
+			}).wow.fadeInDown(data-wow-delay='.1s')
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+
+			+card({
+				cardClass: 'card-corporate',
+				parentId: 'accordion2',
+				number: '3',
+				header: 'What do I receive when I order a template from Zemez?'
+			}).wow.fadeInDown(data-wow-delay='.15s')
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+
+			+card({
+				cardClass: 'card-corporate',
+				parentId: 'accordion2',
+				number: '4',
+				header: 'In what formats are your templates available?'
+			}).wow.fadeInDown(data-wow-delay='.2s')
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+
+	.col-lg-5.wow-outer
+		+jpg('accordions-1-470x368').wow.slideInLeft

@@ -1,0 +1,37 @@
+include ../components/_ui-career-classic
+
+section.section.section-lg.bg-gray-100.text-center
+	.container
+		h3.wow-outer: span.wow.slideInDown Careers
+		.row.row-50
+			.col-md-6.col-lg-4.wow-outer
+				+career-classic({
+					title: 'Real Estate Agent',
+					list: [
+						{iconClass: 'mdi mdi-calendar-clock', text: 'Full Time'},
+						{iconClass: 'mdi mdi-map-marker', text: 'San Diego'}
+					]
+				}).wow.slideInRight
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+			.col-md-6.col-lg-4.wow-outer
+				+career-classic({
+					title: 'Property Manager',
+					list: [
+						{iconClass: 'mdi mdi-calendar-clock', text: 'Full Time'},
+						{iconClass: 'mdi mdi-map-marker', text: 'San Diego'}
+					] 
+				}).wow.slideInRight(data-wow-delay='.05s')
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+			.col-md-6.col-lg-4.wow-outer
+				+career-classic({
+					title: 'Leasing Consultant',
+					list: [
+						{iconClass: 'mdi mdi-calendar-clock', text: 'Full Time'},
+						{iconClass: 'mdi mdi-map-marker', text: 'San Diego'}
+					]
+				}).wow.slideInRight(data-wow-delay='.1s')
+					p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+		.wow-outer.button-outer
+			a.button.button-lg.button-primary.button-winona.wow.slideInUp(href='careers.html') Join Us

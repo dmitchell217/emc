@@ -1,0 +1,147 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'blog'
+	- var pageName = 'Single Blog Post'
+
+block page
+	// Page Header
+	include ../sections/_header-corporate
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	section.section.section-lg
+		.container
+			.row.row-50
+				.col-lg-8
+					article.post-creative
+						h3.post-creative-title.text-none-transform Real Estate Guide: 7 Important Tips for Buying a Home
+						ul.post-creative-meta
+							li
+								span.icon.mdi.mdi-calendar-clock
+								time(datetime='2018') May 9, 2018 at 6:09 pm
+							li
+								span.icon.mdi.mdi-tag-multiple
+								a(href='#') Article
+
+						h4 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+						+jpg('single-blog-post-1-770x458')
+
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+						// Quote Light
+						blockquote.quote-light
+							+quote-mark.quote-light-mark
+							.quote-light-text
+								p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+						+jpg('single-blog-post-2-770x458')
+
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+						ul.post-creative-footer
+							li Share this post!
+							li
+								include ../includes/_group-social-buttons
+
+					.section-sm
+						h3 Comments
+						.comment-classic-group
+							// Comment Classic
+							article.comment-classic
+								figure.comment-classic-figure: +jpg('comment-1-48x48', 'comment-classic-image')
+								.comment-classic-main
+									p.comment-classic-name Albert Webb
+									.comment-classic-text
+										p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+									ul.comment-classic-meta
+										li: time(datetime='2018') May, 9 2018 at 9:06 am
+										li: a.comment-classic-reply(href='#' aria-label='reply')
+
+							.comment-classic-group
+								// Comment Classic
+								article.comment-classic
+									figure.comment-classic-figure: +jpg('comment-2-48x48', 'comment-classic-image')
+									.comment-classic-main
+										p.comment-classic-name Theresa Barnes
+										.comment-classic-text
+											p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+										ul.comment-classic-meta
+											li: time(datetime='2018') May, 9 2018 at 9:47 am
+											li: a.comment-classic-reply(href='#' aria-label='reply')
+
+						.comment-classic-group
+							// Comment Classic
+							article.comment-classic
+								figure.comment-classic-figure: +jpg('comment-3-48x48', 'comment-classic-image')
+								.comment-classic-main
+									p.comment-classic-name Jason Hughes
+									.comment-classic-text
+										p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+									ul.comment-classic-meta
+										li: time(datetime='2018') May, 8 2018 at 12:08 pm
+										li: a.comment-classic-reply(href='#' aria-label='reply')
+
+					.section-sm.section-bottom-0
+						h3 Send a Comment
+						// RD Mailform
+						form.rd-form.rd-mailform(data-form-output='form-output-global', data-form-type='contact', method='post', action='bat/rd-mailform.php')
+							.row.row-10
+								.col-md-6
+									.form-wrap
+										label.form-label-outside(for='comment-first-name') First Name
+										input#comment-first-name.form-input(type='text' name='name' data-constraints='@Required')
+
+								.col-md-6
+									.form-wrap
+										label.form-label-outside(for='comment-last-name') Last Name
+										input#comment-last-name.form-input(type='text' name='name' data-constraints='@Required')
+
+								.col-md-6
+									.form-wrap
+										label.form-label-outside(for='comment-email') E-mail
+										input#comment-email.form-input(type='email' name='email' data-constraints='@Email @Required')
+
+								.col-md-6
+									.form-wrap
+										label.form-label-outside(for='comment-phone') Phone
+										input#comment-phone.form-input(type='text' name='phone' data-constraints='@PhoneNumber')
+
+								.col-12
+									.form-wrap
+										label.form-label-outside(for='comment-message') Your Message
+										textarea#comment-message.form-input(name='message' data-constraints='@Required')
+
+
+							button.button.button-primary.button-winona(type='submit') Submit
+
+				.col-lg-4
+					// Profile Thin
+					article.profile-thin
+						.profile-thin-aside
+							+jpg('profile-thin-2-168x168', 'profile-thin-image')
+							a.profile-thin-contact-button(href='mailto:#')
+								span.icon.mdi.mdi-email-outline
+								span.icon.mdi.mdi-email-outline
+						.profile-thin-main
+							p.profile-thin-title Mike Barnes
+							p.profile-thin-subtitle Realtor, blogger
+							p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+							include ../includes/_group-social-buttons
+							a.button.button-sm.button-accent-outline.button-winona(href='#') View full profile
+
+	// Page Footer
+	include ../sections/_footer-advanced
+	+footer-advanced({
+		about: 'inHouse is the largest full-service real estate and property management company. We offer expertise in the marketing and sale of a wide range of properties, including residential real estate, farms and lifestyle blocks, as well as commercial and industrial properties that we hope may interest you.',
+		posts: [
+			'Real Estate Guide: 7 Important Tips for Buying a Home',
+			'Single-Family Homes as a Housing Option for Young Families'
+		]
+	})

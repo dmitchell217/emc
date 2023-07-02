@@ -1,0 +1,65 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-progress-bar-linear
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Progress Bars'
+
+block page  
+	// Page Header
+	include ../sections/_header-corporate
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Skill Bars 
+	section.section.section-lg
+		.container
+			.row.row-50
+				.col-md-10.col-lg-6.col-xl-5
+					h6 Skill Bars
+					+progress-bar-linear({
+						title: 'Dedication',
+						valueTo: '90'
+					})
+
+					+progress-bar-linear({
+						title: 'Knowledge',
+						valueTo: '65'
+					})
+
+					+progress-bar-linear({
+						title: 'Professionalism',
+						valueTo: '100'
+					})
+
+					+progress-bar-linear({
+						title: 'Expertise',
+						valueTo: '75'
+					})
+
+	.container
+		h6 Countdown
+
+	// Countdown
+	+parallax({
+		img: 'parallax-1'
+	}).section-lg.bg-gray-800
+		.container
+			// TimeCircles
+			.countdown-wrap
+				.DateCountdown(data-type='until' data-date='2019-12-31 00:00:00' data-format='wdhms' data-color=colors.primary data-bg='rgba(245, 245, 245, 1)' data-width='0.02')
+
+	// Page Footer
+	include ../sections/_footer-advanced
+	+footer-advanced({
+		about: 'inHouse is the largest full-service real estate and property management company. We offer expertise in the marketing and sale of a wide range of properties, including residential real estate, farms and lifestyle blocks, as well as commercial and industrial properties that we hope may interest you.',
+		posts: [
+			'Real Estate Guide: 7 Important Tips for Buying a Home',
+			'Single-Family Homes as a Housing Option for Young Families'
+		]
+	})

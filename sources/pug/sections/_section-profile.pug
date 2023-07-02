@@ -1,0 +1,40 @@
+include ../components/_ui-progress-bar-linear
+	
+section.section.section-md
+	.container
+		// Profile Modern
+		article.profile-modern
+			.profile-modern-figure
+				+jpg('team-1-336x336', 'profile-modern-image')
+				a.profile-modern-button(href='#')
+					span.icon.mdi.mdi-facebook-messenger
+					span.icon.mdi.mdi-facebook-messenger
+
+			.profile-modern-main
+				.profile-modern-header
+					.profile-modern-header-item
+						h3 Nathan Porter
+						p Founder, CEO
+
+					.profile-modern-item
+						include ../includes/_group-social-buttons
+
+				.row.row-30
+					.col-lg-6
+						p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec et odio pellentesque diam. Tortor pretium viverra suspendisse potenti nullam ac.
+
+					.col-lg-6
+						+progress-bar-linear({
+							title: 'Dedication',
+							valueTo: '90'
+						})
+
+						+progress-bar-linear({
+							title: 'Knowledge',
+							valueTo: '65'
+						})
+
+						+progress-bar-linear({
+							title: 'Expertise',
+							valueTo: '100'
+						})

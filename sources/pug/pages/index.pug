@@ -1,0 +1,282 @@
+extends  ../_skeleton
+
+//- Includes
+include ../components/_ui-thumbnail-creative
+include ../components/_ui-thumbnail-indigo
+include ../components/_ui-card
+
+block variables
+	- var activeCategory = 'home'
+	- var pageName = 'Home'
+
+block page
+	// Page Header
+	include ../sections/_header-corporate
+
+	.swiper-container.swiper-slider.swiper-slider-minimal(
+		data-loop='true'
+		data-slide-effect='fade'
+		data-autoplay='false'
+		data-simulate-touch='true')
+			.swiper-wrapper
+				.swiper-slide.swiper-slide_video(data-slide-bg='images/slider-minimal-slide-1-1920x968.jpg')
+					.container
+							.jumbotron-classic-content
+								.wow-outer: .title-docor-text.font-weight-bold.title-decorated.text-uppercase.wow.slideInLeft.text-white Offering Diverse
+								h1.text-uppercase.text-white.font-weight-bold.wow-outer: span.wow.slideInDown(data-wow-delay='.2s') Properties
+								p.text-white.wow-outer: span.wow.slideInDown(data-wow-delay='.35s') inHouse provides you with lots of great properties throughout the USA so that you could easily choose your dream property.
+								.wow-outer.button-outer
+									a.button.button-md.button-primary.button-winona.wow.slideInDown(href='properties.html' data-wow-delay='.4s') View Properties
+				.swiper-slide(data-slide-bg='images/slider-minimal-slide-2-1920x968.jpg')
+					.container
+						.jumbotron-classic-content
+							.wow-outer: .title-docor-text.font-weight-bold.title-decorated.text-uppercase.wow.slideInLeft.text-white Easily
+							h1.text-uppercase.text-white.font-weight-bold.wow-outer: span.wow.slideInDown(data-wow-delay='.2s') Rent & Sale
+							p.text-white.wow-outer: span.wow.slideInDown(data-wow-delay='.35s') With the help of our services and property management solutions, you can rent or sell any house or apartment.
+							.wow-outer.button-outer
+								a.button.button-md.button-primary.button-winona.wow.slideInDown(href='properties.html' data-wow-delay='.4s') View properties
+				.swiper-slide(data-slide-bg='images/slider-minimal-slide-3-1920x968.jpg')
+					.container
+						.jumbotron-classic-content
+							.wow-outer: .title-docor-text.font-weight-bold.title-decorated.text-uppercase.wow.slideInLeft.text-white More Than 20 Years of
+							h1.text-uppercase.text-white.font-weight-bold.wow-outer: span.wow.slideInDown(data-wow-delay='.2s') Experience
+							p.text-white.wow-outer: span.wow.slideInDown(data-wow-delay='.35s') Founded in 1989, our company is a team of renowned property management and real estate experts always ready to help you.
+							.wow-outer.button-outer
+								a.button.button-md.button-primary.button-winona.wow.slideInDown(href='properties.html' data-wow-delay='.4s') View properties
+			.swiper-pagination-outer.container: .swiper-pagination.swiper-pagination-modern.swiper-pagination-marked(data-index-bullet='true')
+	section.bg-gray-100.section-md
+		.container
+			form
+				.form-wrap.form-wrap-select.wow.fadeInLeftSmall(data-wow-delay='.3s')
+					.row.row-20.justify-content-md-center
+						// Select 2
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							select.form-input.select(name='find-job-location' data-minimum-results-for-search="Infinity" )
+								option(value='1') All Property Types
+								option(value='2') Residential
+								option(value='3') Commercial
+								option(value='4') Vacant Land
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							select.form-input.select(name='find-job-location' data-minimum-results-for-search="Infinity" )
+								option(value='1') All States
+								option(value='2') New York
+								option(value='3') Washington
+								option(value='4') Georgia
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							select.form-input.select(name='find-job-location' data-minimum-results-for-search="Infinity" )
+								option(value='1') All Cities
+								option(value='2') New York
+								option(value='3') Seattle
+								option(value='4') Atlanta
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							select.form-input.select(name='find-job-location' data-minimum-results-for-search="Infinity" )
+								option(value='1') All Listing Types
+								option(value='2') Exclusive Right to Sell
+								option(value='3') Exclusive Agency
+								option(value='4') Open Agency
+						// Select 2
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							select.form-input.select(name='find-job-location' data-minimum-results-for-search="Infinity" )
+								option(value='1') All Bedrooms
+								option(value='2') Master Bedrooms
+								option(value='3') Guest Bedrooms
+								option(value='4') Teen Bedrooms
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							.rd-range(data-min="0" data-max="350" data-start="[50, 250]" data-step="1" data-tooltip="false" data-min-diff="50" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2")
+							.rd-range-wrap
+								.rd-range-form-wrap
+									span $
+									input.rd-range-input.rd-range-input-value-1(type="text" name="value-1")
+								span.price-devider -
+								.rd-range-form-wrap
+									span $
+									input.rd-range-input.rd-range-input-value-2(type="text" name="value-2")
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							.rd-range(data-min="0" data-max="350" data-start="[50, 250]" data-step="1" data-tooltip="false" data-min-diff="50" data-input=".rd-range-input-value-1" data-input-2=".rd-range-input-value-2")
+							.rd-range-wrap
+								.rd-range-form-wrap
+									span $
+									input.rd-range-input.rd-range-input-value-1(type="text" name="value-1")
+								span.price-devider -
+								.rd-range-form-wrap
+									span $
+									input.rd-range-input.rd-range-input-value-2(type="text" name="value-2")
+						.col-xl-3.col-lg-3.col-md-4.col-sm-6.col-12
+							a.button.button-md.button-primary.button-winona.form-btn.wow.slideInDown(href='#' data-wow-delay='.4s') Search
+	section.section.section-md.text-center
+		.container
+			h3.text-uppercase.font-weight-bold.wow-outer: span.wow.slideInDown Popular properties
+			.row.row-50.offset-top-2
+				.col-md-6.wow-outer
+					// Post Modern
+					article.post-modern.wow.slideInLeft
+						a.post-modern-media(href=links.post): +jpg('grid-blog-1-571x353')
+						h4.post-modern-title: a(href=links.post).post-modern-title 5619 Walnut Hill Ln, Dallas, TX 75229
+						ul.post-modern-meta
+							li: a.button-winona(href='#') $1500/mon
+							li 30 Sq. Ft.
+							li 3 Bedrooms
+						p A comfortable residential property located in a quiet and cozy area.
+
+				.col-md-6.wow-outer
+					// Post Modern
+					article.post-modern.wow.slideInLeft
+						a.post-modern-media(href=links.post): +jpg('grid-blog-2-571x353')
+						h4.post-modern-title: a(href=links.post).post-modern-title 1808 Bolingbroke Pl, Fort Worth, TX 76140
+						ul.post-modern-meta
+							li: a.button-winona(href='#') $1300/mon
+							li 40 Sq. Ft.
+							li 2 Bedrooms
+						p Perfect for those who love both city life and the countryside.
+
+
+				.col-md-6.wow-outer
+					// Post Modern
+					article.post-modern.wow.slideInLeft
+						a.post-modern-media(href=links.post): +jpg('grid-blog-3-571x353')
+						h4.post-modern-title: a(href=links.post).post-modern-title 924 Bel Air Rd, Los Angeles, CA 90077
+						ul.post-modern-meta
+							li: a.button-winona(href='#') 1800/mon
+							li 50 Sq. Ft.
+							li 4 Bedrooms
+						p Located in 5 mins from downtown, this property is great for anyone.
+
+				.col-md-6.wow-outer
+					// Post Modern
+					article.post-modern.wow.slideInLeft
+						a.post-modern-media(href=links.post): +jpg('grid-blog-4-571x353')
+						h4.post-modern-title: a(href=links.post).post-modern-title 13510 W Cheery Lynn Rd, Avondale, AZ 85392
+						ul.post-modern-meta
+							li: a.button-winona(href='#') $2700/mon
+							li 90 Sq. Ft.
+							li 2 Bedrooms
+						p A luxury mansion for people who enjoy the high-end amenities.
+
+				.col-md-12.wow-outer
+					a(href="single-property.html").button.button-primary.button-winona.button-md view More properties
+
+
+	include ../sections/_section-small-features
+	// Services
+	section.section-lg.text-center
+		.container
+			h3.text-uppercase Residential property categories
+			p: span.text-width-1 At our agency, we work with various types of residential real estate property. You can find out more about our properties by browsing our website.
+			.row.row-50.row-xxl-70.offset-top-2
+				.col-sm-6.col-lg-3
+					// Thumbnail Light
+					article.thumbnail-light
+						a.thumbnail-light-media(href='single-property.html'): +jpg('service-thumbnail-1-270x300', 'thumbnail-light-image')
+						h4.thumbnail-light-title: a(href='single-service.html') Single-Family Homes
+
+				.col-sm-6.col-lg-3
+					// Thumbnail Light
+					article.thumbnail-light
+						a.thumbnail-light-media(href='single-property.html'): +jpg('service-thumbnail-2-270x300', 'thumbnail-light-image')
+						h4.thumbnail-light-title: a(href='single-property.html') Townhouses
+
+				.col-sm-6.col-lg-3
+					// Thumbnail Light
+					article.thumbnail-light
+						a.thumbnail-light-media(href='single-property.html'): +jpg('service-thumbnail-3-270x300', 'thumbnail-light-image')
+						h4.thumbnail-light-title: a(href='single-property.html') Multi-Family Homes
+
+				.col-sm-6.col-lg-3
+					// Thumbnail Light
+					article.thumbnail-light
+						a.thumbnail-light-media(href='single-property.html'): +jpg('service-thumbnail-4-270x300', 'thumbnail-light-image')
+						h4.thumbnail-light-title: a(href='single-property.html') Condominiums
+				.col-md-12.wow-outer
+					a(href="properties.html").button.button-primary.button-winona.button-md view all properties
+	include ../sections/_section-our-team
+	// Best offer
+	section.section.section-1.bg-primary-darker.text-center(style='background-image: url(images/bg-1-1920-455.jpg);')
+		.container
+			.row.justify-content-center
+				.col-sm-10.col-lg-7.col-xl-6
+					h3.wow-outer: span.wow.slideInDown.text-uppercase Best offers
+					p.heading-subtitle of September
+					p.wow-outer.offset-top-4: span.wow.slideInDown(data-wow-delay='.05s') With a variety of accountants available at our company, you can always choose one that fits your corporate requirements.
+					.wow-outer.button-outer
+						a.button.button-primary-white.button-winona.wow.slideInDown(href='#' data-wow-delay='.1s') Read more
+	section.section.section-lg.text-center
+		.container
+			h3.wow-outer: span.wow.slideInDown.text-uppercase Testimonials
+			// Owl Carousel
+			.owl-carousel.wow.fadeIn(
+			data-items='1'
+			data-md-items='2'
+			data-lg-items='3'
+			data-dots='true'
+			data-nav='false'
+			data-loop='true'
+			data-margin='30'
+			data-stage-padding='0'
+			data-mouse-drag="false")
+				blockquote.quote-classic
+					.quote-classic-meta
+						.quote-classic-avatar: +jpg('testimonials-person-6-96x96')
+						.quote-classic-info
+							cite.quote-classic-cite Albert Webb
+							p.quote-classic-caption Regular Client
+					.quote-classic-text
+						p I have just bought an apartment in LA thanks to you and your brokers. Everything went smooth and easy, the price was quite affordable, and I’m sure I will use your services again in the future.
+
+				blockquote.quote-classic
+					.quote-classic-meta
+						.quote-classic-avatar: +jpg('testimonials-person-1-96x96')
+						.quote-classic-info
+							cite.quote-classic-cite Kelly McMillan
+							p.quote-classic-caption Regular Client
+					.quote-classic-text
+						p I have recently sold my rental property in Nelson via inHouse. Everything about the sale was made seamless by your team. You gave me great advice about what was necessary to expedite the sale.
+
+				blockquote.quote-classic
+					.quote-classic-meta
+						.quote-classic-avatar: +jpg('testimonials-person-2-96x96')
+						.quote-classic-info
+							cite.quote-classic-cite Harold Barnett
+							p.quote-classic-caption Regular Client
+					.quote-classic-text
+						p I really appreciate your time and expertise in helping me find and buy my current home in Seattle, WA. Hope we can do business again in the future and I will recommend you to family and friends.
+
+				blockquote.quote-classic
+					.quote-classic-meta
+						.quote-classic-avatar: +jpg('testimonials-person-3-96x96')
+						.quote-classic-info
+							cite.quote-classic-cite Bill Warner
+							p.quote-classic-caption Regular Client
+					.quote-classic-text
+						p I have just sold a property with inHouse and I can’t thank them enough. Their team has great communication skills and they have regularly communicated with me throughout the whole process.
+
+				blockquote.quote-classic
+					.quote-classic-meta
+						.quote-classic-avatar: +jpg('testimonials-person-4-96x96')
+						.quote-classic-info
+							cite.quote-classic-cite Ann Lee
+							p.quote-classic-caption Regular Client
+					.quote-classic-text
+						p Your skilled team helped me make the dream of selling my old property a reality. The sale went smoothly, and I just closed on an ideal new place I am excited to call home. Thank you for your great services!
+
+				blockquote.quote-classic
+					.quote-classic-meta
+						.quote-classic-avatar: +jpg('testimonials-person-5-96x96')
+						.quote-classic-info
+							cite.quote-classic-cite Peter Clarkson
+							p.quote-classic-caption Regular Client
+					.quote-classic-text
+						p I have to say that inHouse has the best brokers we've ever worked with. Their professionalism, personality, attention to detail, responsiveness and ability to close the deal are outstanding!
+
+	include ../sections/_section-contact-form-and-map
+
+	include ../sections/_section-contact-info
+
+	include ../sections/_footer-advanced
+	+footer-advanced({
+		about: 'inHouse is the largest full-service real estate and property management company. We offer expertise in the marketing and sale of a wide range of properties, including residential real estate, farms and lifestyle blocks, as well as commercial and industrial properties that we hope may interest you.',
+		posts: [
+			'Real Estate Guide: 7 Important Tips for Buying a Home',
+			'Single-Family Homes as a Housing Option for Young Families'
+		]
+	})
+

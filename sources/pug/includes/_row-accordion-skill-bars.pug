@@ -1,0 +1,66 @@
+include ../components/_ui-card
+include ../components/_ui-progress-bar-linear
+
+.row.row-50.justify-content-lg-between.offset-top-1
+	.col-lg-7.col-xl-6
+		h3.wow-outer: span.wow.slideInDown Frequently Asked Questions
+		// Bootstrap collapse
+		#accordion1.card-group-custom.card-group-corporate.wow-outer(role='tablist' aria-multiselectable='false')
+			+card({
+				show: true,
+				cardClass: 'card-corporate',
+				parentId: 'accordion1', 
+				number: '1',
+				header: 'What are the advantages of purchasing a website template?'
+			}).wow.fadeInDown(data-wow-delay='.05s')
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+				
+			+card({
+				cardClass: 'card-corporate',
+				parentId: 'accordion1',
+				number: '2',
+				header: 'Do you provide any scripts with your templates or could you do some custom programming?'
+			}).wow.fadeInDown(data-wow-delay='.1s')
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+
+			+card({
+				cardClass: 'card-corporate',
+				parentId: 'accordion1',
+				number: '3',
+				header: 'What do I receive when I order a template from Zemez?'
+			}).wow.fadeInDown(data-wow-delay='.15s')
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+
+			+card({
+				cardClass: 'card-corporate',
+				parentId: 'accordion1',
+				number: '4',
+				header: 'In what formats are your templates available?'
+			}).wow.fadeInDown(data-wow-delay='.2s')
+				p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+
+	.col-lg-5
+		h3.wow-outer: span.wow.slideInDown Skill Bars
+		.progress-linear-outer.wow-outer
+			+progress-bar-linear({
+				title: 'Dedication',
+				valueTo: '90'
+			}).wow.slideInDown(data-wow-delay='.05s')
+
+		.progress-linear-outer.wow-outer
+			+progress-bar-linear({
+				title: 'Knowledge',
+				valueTo: '65'
+			}).wow.slideInDown(data-wow-delay='.1s')
+
+		.progress-linear-outer.wow-outer
+			+progress-bar-linear({
+				title: 'Professionalism',
+				valueTo: '100'
+			}).wow.slideInDown(data-wow-delay='.15s')
+			
+		.progress-linear-outer.wow-outer
+			+progress-bar-linear({
+				title: 'Expertise',
+				valueTo: '75'
+			}).wow.slideInDown(data-wow-delay='.2s')

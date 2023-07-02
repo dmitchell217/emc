@@ -1,0 +1,98 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'blog'
+	- var pageName = 'Blog Layouts'
+
+block page 
+	// Page Header
+	include ../sections/_header-corporate
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// 3 Column Layout
+	section.section.section-lg.bg-gray-100.text-center
+		.container
+			h3 3 Column Layout
+			include ../includes/_row-blog-3-cols
+
+	// 2 Column Layout
+	section.section.section-lg.text-center
+		.container
+			h3 2 Column Layout
+			.row.row-50
+				.col-md-6.wow-outer
+					// Post Modern
+					article.post-modern.wow.slideInLeft
+						a.post-modern-media(href=links.post): +jpg('grid-blog-1-571x353')
+						h4.post-modern-title: a(href=links.post).post-modern-title 5619 Walnut Hill Ln, Dallas, TX 75229
+						ul.post-modern-meta
+							li: a.button-winona(href='#') $1500/mon
+							li 30 Sq. Ft.
+							li 3 Bedrooms
+						p A comfortable residential property located in a quiet and cozy area.
+
+				.col-md-6.wow-outer
+					// Post Modern
+					article.post-modern.wow.slideInLeft
+						a.post-modern-media(href=links.post): +jpg('grid-blog-2-571x353')
+						h4.post-modern-title: a(href=links.post).post-modern-title 1808 Bolingbroke Pl, Fort Worth, TX 76140
+						ul.post-modern-meta
+							li: a.button-winona(href='#') $1300/mon
+							li 40 Sq. Ft.
+							li 2 Bedrooms
+						p Perfect for those who love both city life and the countryside.
+
+			a.button.button-primary-outline.button-winona(href='grid-blog.html') View all
+			
+	// News Posts Layout
+	section.section.section-lg.bg-gray-100
+		.container
+			h3.text-center News Posts Layout
+			include ../includes/_row-news-post-layout
+
+	// Residential property categories
+	section.section-lg.text-center
+		.container
+			h3.text-uppercase Residential property categories
+			p: span.text-width-1 At our agency, we work with various types of residential real estate property. You can find out more about our properties by browsing our website.
+			.row.row-50.row-xxl-70.offset-top-2
+				.col-sm-6.col-lg-3
+					// Thumbnail Light
+					article.thumbnail-light
+						a.thumbnail-light-media(href='single-property.html'): +jpg('service-thumbnail-1-270x300', 'thumbnail-light-image')
+						h4.thumbnail-light-title: a(href='single-property.html') Single-Family Homes
+
+				.col-sm-6.col-lg-3
+					// Thumbnail Light
+					article.thumbnail-light
+						a.thumbnail-light-media(href='single-property.html'): +jpg('service-thumbnail-2-270x300', 'thumbnail-light-image')
+						h4.thumbnail-light-title: a(href='single-property.html') Townhouses
+
+				.col-sm-6.col-lg-3
+					// Thumbnail Light
+					article.thumbnail-light
+						a.thumbnail-light-media(href='single-property.html'): +jpg('service-thumbnail-3-270x300', 'thumbnail-light-image')
+						h4.thumbnail-light-title: a(href='single-property.html') Multi-Family Homes
+
+				.col-sm-6.col-lg-3
+					// Thumbnail Light
+					article.thumbnail-light
+						a.thumbnail-light-media(href='single-property.html'): +jpg('service-thumbnail-4-270x300', 'thumbnail-light-image')
+						h4.thumbnail-light-title: a(href='single-property.html') Condominiums
+				.col-md-12.wow-outer
+					a.button.button-primary-outline.button-winona(href='grid-blog.html') View all
+
+
+	// Page Footer
+	include ../sections/_footer-advanced
+	+footer-advanced({
+		about: 'inHouse is the largest full-service real estate and property management company. We offer expertise in the marketing and sale of a wide range of properties, including residential real estate, farms and lifestyle blocks, as well as commercial and industrial properties that we hope may interest you.',
+		posts: [
+			'Real Estate Guide: 7 Important Tips for Buying a Home',
+			'Single-Family Homes as a Housing Option for Young Families'
+		]
+	})

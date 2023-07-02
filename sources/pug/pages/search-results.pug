@@ -1,0 +1,40 @@
+extends  ../_skeleton
+
+block variables
+	- var activeCategory = 'pages'
+	- var pageName = 'Search Results'
+
+block page 
+	// Page Header
+	include ../sections/_header-corporate
+
+	+breadcrumbs({
+		category: activeCategory,
+		path: [pageName]
+	})
+
+	// Search results
+	section.section.section-lg
+		.container
+			.row
+				.col-lg-11.col-xl-8
+					// RD Search
+					form.rd-form.rd-search.rd-search-classic(action='search-results.html' method='GET')
+						.form-wrap
+							label.form-label-outside(for='rd-search-form-input') Search
+							.form-wrap-inner
+								input.form-input#rd-search-form-input(type='text' name='s' autocomplete='off')
+								button.rd-search-submit(type='submit' aria-label='Submit')
+
+					.rd-search-results
+
+	// Page Footer
+	include ../sections/_footer-advanced
+	+footer-advanced({
+		about: 'inHouse is the largest full-service real estate and property management company. We offer expertise in the marketing and sale of a wide range of properties, including residential real estate, farms and lifestyle blocks, as well as commercial and industrial properties that we hope may interest you.',
+		posts: [
+			'Real Estate Guide: 7 Important Tips for Buying a Home',
+			'Single-Family Homes as a Housing Option for Young Families'
+		]
+	})
+
