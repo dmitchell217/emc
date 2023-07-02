@@ -1,9 +1,8 @@
 export default {
-    root: './',
-    base: './',
-    server: {
-      open: '/',
-      cors: true
+  root: './',
+  build: {
+    rollupOptions: {
+      input: 'index.html'
     }
   }
-  
+}
