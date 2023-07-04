@@ -19,8 +19,8 @@ bower_components
 Thumbs.db
 
 # Ignore built ts files
-dist/**/*
-**/dist/**
+# dist/**/*
+# **/dist/**
 
 # ignore package-lock since we use yarn
 package-lock.json
