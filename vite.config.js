@@ -1,5 +1,5 @@
 export default {
-  assetsInclude: ['**/*.js'],
+  // assetsInclude: ['**/*.js'],
   build: {
     rollupOptions: {
       input: 'index.html',
