@@ -2,6 +2,7 @@
 (function () {
 
 	// Global variables
+	var $ = require('jquery');
 	var userAgent = navigator.userAgent.toLowerCase(),
 		initialDate = new Date(),
 
