@@ -1,10 +1,9 @@
 "use strict";
-
-import $ from 'jquery';
-export default function main() {
+(function () {
 
 	// Global variables
-	let userAgent = navigator.userAgent.toLowerCase(),
+	var $ = require('jquery');
+	var userAgent = navigator.userAgent.toLowerCase(),
 		initialDate = new Date(),
 
 		$document = $(document),
@@ -101,7 +100,7 @@ export default function main() {
 		 * @return {number} slider height
 		 */
 		function getSwiperHeight(object, attr) {
-			let val = object.attr("data-" + attr),
+			var val = object.attr("data-" + attr),
 				dim;
 
 			if (!val) {
@@ -131,12 +130,12 @@ export default function main() {
 		 * @param {object} swiper - swiper slider
 		 */
 		function toggleSwiperInnerVideos(swiper) {
-			let prevSlide = $(swiper.slides[swiper.previousIndex]),
+			var prevSlide = $(swiper.slides[swiper.previousIndex]),
 				nextSlide = $(swiper.slides[swiper.activeIndex]),
 				videos,
 				videoItems = prevSlide.find("video");
 
-			for (let i = 0; i < videoItems.length; i++) {
+			for (var i = 0; i < videoItems.length; i++) {
 				videoItems[i].pause();
 			}
 
@@ -151,14 +150,14 @@ export default function main() {
 		 * @param {object} swiper - swiper slider
 		 */
 		function toggleSwiperCaptionAnimation(swiper) {
-			let prevSlides = $(swiper.el).find("[data-caption-animate]"),
+			var prevSlides = $(swiper.el).find("[data-caption-animate]"),
 				nextSlide = $(swiper.slides[swiper.activeIndex]).find("[data-caption-animate]"),
 				delay,
 				duration,
 				nextSlideItem,
 				prevSlideItem;
 
-			for (let i = 0; i < prevSlides.length; i++) {
+			for (var i = 0; i < prevSlides.length; i++) {
 				prevSlideItem = $(prevSlides[i]);
 
 				prevSlideItem.removeClass("animated")
@@ -167,7 +166,7 @@ export default function main() {
 			}
 
 
-			let tempFunction = function (nextSlideItem, duration) {
+			var tempFunction = function (nextSlideItem, duration) {
 				return function () {
 					nextSlideItem
 						.removeClass("not-animated")
@@ -179,7 +178,7 @@ export default function main() {
 				};
 			};
 
-			for (let i = 0; i < nextSlide.length; i++) {
+			for (var i = 0; i < nextSlide.length; i++) {
 				nextSlideItem = $(nextSlide[i]);
 				delay = nextSlideItem.attr("data-caption-delay");
 				duration = nextSlideItem.attr('data-caption-duration');
@@ -201,13 +200,13 @@ export default function main() {
 		 * @param {object} c - carousel jQuery object
 		 */
 		function initOwlCarousel(c) {
-			let aliaces = ["-", "-sm-", "-md-", "-lg-", "-xl-", "-xxl-"],
+			var aliaces = ["-", "-sm-", "-md-", "-lg-", "-xl-", "-xxl-"],
 				values = [0, 576, 768, 992, 1200, 1600],
 				responsive = {};
 
-			for (let j = 0; j < values.length; j++) {
+			for (var j = 0; j < values.length; j++) {
 				responsive[values[j]] = {};
-				for (let k = j; k >= -1; k--) {
+				for (var k = j; k >= -1; k--) {
 					if (!responsive[values[j]]["items"] && c.attr("data" + aliaces[k] + "items")) {
 						responsive[values[j]]["items"] = k < 0 ? 1 : parseInt(c.attr("data" + aliaces[k] + "items"), 10);
 					}
@@ -226,7 +225,7 @@ export default function main() {
 			// Enable custom pagination
 			if (c.attr('data-dots-custom')) {
 				c.on("initialized.owl.carousel", function (event) {
-					let carousel = $(event.currentTarget),
+					var carousel = $(event.currentTarget),
 						customPag = $(carousel.attr("data-dots-custom")),
 						active = 0;
 
@@ -239,7 +238,7 @@ export default function main() {
 
 					customPag.find("[data-owl-item]").on('click', function (e) {
 						e.preventDefault();
-						carousel.trigger('to.owl.carousel', [parseInt(window.getAttribute("data-owl-item"), 10), 300, true]);
+						carousel.trigger('to.owl.carousel', [parseInt(this.getAttribute("data-owl-item"), 10), 300, true]);
 					});
 
 					carousel.on("translate.owl.carousel", function (event) {
@@ -334,7 +333,7 @@ export default function main() {
 				template: options.template
 			}, function (data) {
 				options.processed++;
-				let live = $('#' + options.live);
+				var live = $('#' + options.live);
 				if ((options.processed === options.current) && !live.hasClass('cleared')) {
 					live.find('> #search-results').removeClass('active');
 					live.html(data);
@@ -356,34 +355,34 @@ export default function main() {
 				name: 'PhoneNumber',
 				defaultMessage: 'Invalid phone number format',
 				validator: function () {
-					if (window.value === '') return true;
-					else return /^(\+\d)?[0-9\-\(\) ]{5,}$/i.test(window.value);
+					if (this.value === '') return true;
+					else return /^(\+\d)?[0-9\-\(\) ]{5,}$/i.test(this.value);
 				}
 			});
 
-			for (let i = 0; i < elements.length; i++) {
-				let o = $(elements[i]), v;
+			for (var i = 0; i < elements.length; i++) {
+				var o = $(elements[i]), v;
 				o.addClass("form-control-has-validation").after("<span class='form-validation'></span>");
 				v = o.parent().find(".form-validation");
 				if (v.is(":last-child")) o.addClass("form-control-last-child");
 			}
 
 			elements.on('input change propertychange blur', function (e) {
-				let $window = $(window), results;
+				var $this = $(this), results;
 
-				if (e.type !== "blur") if (!$window.parent().hasClass("has-error")) return;
-				if ($window.parents('.rd-mailform').hasClass('success')) return;
+				if (e.type !== "blur") if (!$this.parent().hasClass("has-error")) return;
+				if ($this.parents('.rd-mailform').hasClass('success')) return;
 
-				if ((results = $window.regula('validate')).length) {
+				if ((results = $this.regula('validate')).length) {
 					for (i = 0; i < results.length; i++) {
-						$window.siblings(".form-validation").text(results[i].message).parent().addClass("has-error");
+						$this.siblings(".form-validation").text(results[i].message).parent().addClass("has-error");
 					}
 				} else {
-					$window.siblings(".form-validation").text("").parent().removeClass("has-error")
+					$this.siblings(".form-validation").text("").parent().removeClass("has-error")
 				}
 			}).regula('bind');
 
-			let regularConstraintsMessages = [
+			var regularConstraintsMessages = [
 				{
 					type: regula.Constraint.Required,
 					newMessage: "The text field is required."
@@ -403,8 +402,8 @@ export default function main() {
 			];
 
 
-			for (let i = 0; i < regularConstraintsMessages.length; i++) {
-				let regularConstraint = regularConstraintsMessages[i];
+			for (var i = 0; i < regularConstraintsMessages.length; i++) {
+				var regularConstraint = regularConstraintsMessages[i];
 
 				regula.override({
 					constraintType: regularConstraint.type,
@@ -420,12 +419,12 @@ export default function main() {
 		 * @return {boolean}
 		 */
 		function isValidated(elements, captcha) {
-			let results, errors = 0;
+			var results, errors = 0;
 
 			if (elements.length) {
-				for (let j = 0; j < elements.length; j++) {
+				for (var j = 0; j < elements.length; j++) {
 
-					let $input = $(elements[j]);
+					var $input = $(elements[j]);
 					if ((results = $input.regula('validate')).length) {
 						for (k = 0; k < results.length; k++) {
 							errors++;
@@ -453,7 +452,7 @@ export default function main() {
 		 * @return {boolean}
 		 */
 		function validateReCaptcha(captcha) {
-			let captchaToken = captcha.find('.g-recaptcha-response').val();
+			var captchaToken = captcha.find('.g-recaptcha-response').val();
 
 			if (captchaToken.length === 0) {
 				captcha
@@ -465,18 +464,18 @@ export default function main() {
 					.addClass('has-error');
 
 				captcha.on('propertychange', function () {
-					let $window = $(window),
-						captchaToken = $window.find('.g-recaptcha-response').val();
+					var $this = $(this),
+						captchaToken = $this.find('.g-recaptcha-response').val();
 
 					if (captchaToken.length > 0) {
-						$window
+						$this
 							.closest('.form-wrap')
 							.removeClass('has-error');
-						$window
+						$this
 							.siblings('.form-validation')
 							.removeClass('active')
 							.html('');
-						$window.off('propertychange');
+						$this.off('propertychange');
 					}
 				});
 
@@ -490,8 +489,8 @@ export default function main() {
 		 * @desc Initialize Google reCaptcha
 		 */
 		window.onloadCaptchaCallback = function () {
-			for (let i = 0; i < plugins.captcha.length; i++) {
-				let $capthcaItem = $(plugins.captcha[i]);
+			for (var i = 0; i < plugins.captcha.length; i++) {
+				var $capthcaItem = $(plugins.captcha[i]);
 
 				grecaptcha.render(
 					$capthcaItem.attr('id'),
@@ -573,7 +572,7 @@ export default function main() {
 		function initLightGalleryItem(itemToInit, addClass) {
 			if (!isNoviBuilder) {
 				$(itemToInit).lightGallery({
-					selector: "window",
+					selector: "this",
 					addClass: addClass,
 					counter: false,
 					youtubePlayerParams: {
@@ -596,8 +595,8 @@ export default function main() {
 		 */
 		function initHoverDir(elements) {
 			if(!isNoviBuilder && isDesktop) {
-				for (let z = 0; z < elements.length; z++) {
-					let $element = $(elements[z]);
+				for (var z = 0; z < elements.length; z++) {
+					var $element = $(elements[z]);
 
 					$element.hoverdir({
 							hoverElem: $element.attr('data-hoverdir-target') ? $element.attr('data-hoverdir-target') : 'div'
@@ -642,7 +641,7 @@ export default function main() {
 
 		// Bootstrap Tooltips
 		if (plugins.bootstrapTooltip.length) {
-			let tooltipPlacement = plugins.bootstrapTooltip.attr('data-placement');
+			var tooltipPlacement = plugins.bootstrapTooltip.attr('data-placement');
 			initBootstrapTooltip(tooltipPlacement);
 
 			$window.on('resize orientationchange', function () {
@@ -652,11 +651,11 @@ export default function main() {
 
 		// Stop vioeo in bootstrapModalDialog
 		if (plugins.bootstrapModalDialog.length) {
-			for (let i = 0; i < plugins.bootstrapModalDialog.length; i++) {
-				let modalItem = $(plugins.bootstrapModalDialog[i]);
+			for (var i = 0; i < plugins.bootstrapModalDialog.length; i++) {
+				var modalItem = $(plugins.bootstrapModalDialog[i]);
 
 				modalItem.on('hidden.bs.modal', $.proxy(function () {
-					let activeModal = $(window),
+					var activeModal = $(this),
 						rdVideoInside = activeModal.find('video'),
 						youTubeVideoInside = activeModal.find('iframe');
 
@@ -665,7 +664,7 @@ export default function main() {
 					}
 
 					if (youTubeVideoInside.length) {
-						let videoUrl = youTubeVideoInside.attr('src');
+						var videoUrl = youTubeVideoInside.attr('src');
 
 						youTubeVideoInside
 							.attr('src', '')
@@ -689,7 +688,7 @@ export default function main() {
 		// Bootstrap Buttons
 		if (plugins.statefulButton.length) {
 			$(plugins.statefulButton).on('click', function () {
-				let statefulButtonLoading = $(window).button('loading');
+				var statefulButtonLoading = $(this).button('loading');
 
 				setTimeout(function () {
 					statefulButtonLoading.button('reset')
@@ -699,17 +698,17 @@ export default function main() {
 
 		// Bootstrap tabs
 		if (plugins.bootstrapTabs.length) {
-			for (let i = 0; i < plugins.bootstrapTabs.length; i++) {
-				let bootstrapTabsItem = $(plugins.bootstrapTabs[i]);
+			for (var i = 0; i < plugins.bootstrapTabs.length; i++) {
+				var bootstrapTabsItem = $(plugins.bootstrapTabs[i]);
 
 				//If have slick carousel inside tab - resize slick carousel on click
 				if (bootstrapTabsItem.find('.slick-slider').length) {
 					bootstrapTabsItem.find('.tabs-custom-list > li > a').on('click', $.proxy(function () {
-						let $window = $(window);
-						let setTimeOutTime = isNoviBuilder ? 1500 : 300;
+						var $this = $(this);
+						var setTimeOutTime = isNoviBuilder ? 1500 : 300;
 
 						setTimeout(function () {
-							$window.find('.tab-content .tab-pane.active .slick-slider').slick('setPosition');
+							$this.find('.tab-content .tab-pane.active .slick-slider').slick('setPosition');
 						}, setTimeOutTime);
 					}, bootstrapTabsItem));
 				}
@@ -726,7 +725,7 @@ export default function main() {
 		 * @desc Google map function for getting latitude and longitude
 		 */
 		function getLatLngObject(str, marker, map, callback) {
-			let coordinates = {};
+			var coordinates = {};
 			try {
 				coordinates = JSON.parse(str);
 				callback(new google.maps.LatLng(
@@ -736,8 +735,8 @@ export default function main() {
 			} catch (e) {
 				map.geocoder.geocode({'address': str}, function (results, status) {
 					if (status === google.maps.GeocoderStatus.OK) {
-						let latitude = results[0].geometry.location.lat();
-						let longitude = results[0].geometry.location.lng();
+						var latitude = results[0].geometry.location.lat();
+						var longitude = results[0].geometry.location.lng();
 
 						callback(new google.maps.LatLng(
 							parseFloat(latitude),
@@ -752,9 +751,9 @@ export default function main() {
 		 * @desc Initialize Google maps
 		 */
 		function initMaps() {
-			let key;
+			var key;
 
-			for ( let i = 0; i < plugins.maps.length; i++ ) {
+			for ( var i = 0; i < plugins.maps.length; i++ ) {
 				if ( plugins.maps[i].hasAttribute( "data-key" ) ) {
 					key = plugins.maps[i].getAttribute( "data-key" );
 					break;
@@ -762,7 +761,7 @@ export default function main() {
 			}
 
 			$.getScript('//maps.google.com/maps/api/js?'+ ( key ? 'key='+ key + '&' : '' ) +'sensor=false&libraries=geometry,places&v=quarterly', function () {
-				let head = document.getElementsByTagName('head')[0],
+				var head = document.getElementsByTagName('head')[0],
 					insertBefore = head.insertBefore;
 
 				head.insertBefore = function (newElement, referenceElement) {
@@ -771,14 +770,14 @@ export default function main() {
 					}
 					insertBefore.call(head, newElement, referenceElement);
 				};
-				let geocoder = new google.maps.Geocoder;
-				for (let i = 0; i < plugins.maps.length; i++) {
-					let zoom = parseInt(plugins.maps[i].getAttribute("data-zoom"), 14) || 15;
-					let styles = plugins.maps[i].hasAttribute('data-styles') ? JSON.parse(plugins.maps[i].getAttribute("data-styles")) : [];
-					let center = plugins.maps[i].getAttribute("data-center") || "New York";
+				var geocoder = new google.maps.Geocoder;
+				for (var i = 0; i < plugins.maps.length; i++) {
+					var zoom = parseInt(plugins.maps[i].getAttribute("data-zoom"), 14) || 15;
+					var styles = plugins.maps[i].hasAttribute('data-styles') ? JSON.parse(plugins.maps[i].getAttribute("data-styles")) : [];
+					var center = plugins.maps[i].getAttribute("data-center") || "New York";
 
 					// Initialize map
-					let map = new google.maps.Map(plugins.maps[i].querySelectorAll(".google-map")[0], {
+					var map = new google.maps.Map(plugins.maps[i].querySelectorAll(".google-map")[0], {
 						zoom: zoom,
 						styles: styles,
 						scrollwheel: false,
@@ -796,46 +795,46 @@ export default function main() {
 					});
 
 					// Add markers from google-map-markers array
-					let markerItems = plugins.maps[i].querySelectorAll(".google-map-markers li");
+					var markerItems = plugins.maps[i].querySelectorAll(".google-map-markers li");
 
 					if (markerItems.length){
-						let markers = [];
-						for (let j = 0; j < markerItems.length; j++){
-							let markerElement = markerItems[j];
+						var markers = [];
+						for (var j = 0; j < markerItems.length; j++){
+							var markerElement = markerItems[j];
 							getLatLngObject(markerElement.getAttribute("data-location"), markerElement, plugins.maps[i], function(location, markerElement, mapElement){
-								let icon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon");
-								let activeIcon = markerElement.getAttribute("data-icon-active") || mapElement.getAttribute("data-icon-active");
-								let info = markerElement.getAttribute("data-description") || "";
-								let infoWindow = new google.maps.InfoWindow({
+								var icon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon");
+								var activeIcon = markerElement.getAttribute("data-icon-active") || mapElement.getAttribute("data-icon-active");
+								var info = markerElement.getAttribute("data-description") || "";
+								var infoWindow = new google.maps.InfoWindow({
 									content: info
 								});
 								markerElement.infoWindow = infoWindow;
-								let markerData = {
+								var markerData = {
 									position: location,
 									map: mapElement.map
 								}
 								if (icon){
 									markerData.icon = icon;
 								}
-								let marker = new google.maps.Marker(markerData);
+								var marker = new google.maps.Marker(markerData);
 								markerElement.gmarker = marker;
 								markers.push({markerElement: markerElement, infoWindow: infoWindow});
 								marker.isActive = false;
 								// Handle infoWindow close click
 								google.maps.event.addListener(infoWindow,'closeclick',(function(markerElement, mapElement){
-									let markerIcon = null;
+									var markerIcon = null;
 									markerElement.gmarker.isActive = false;
 									markerIcon = markerElement.getAttribute("data-icon") || mapElement.getAttribute("data-icon");
 									markerElement.gmarker.setIcon(markerIcon);
-								}).bind(window, markerElement, mapElement));
+								}).bind(this, markerElement, mapElement));
 
 
 								// Set marker active on Click and open infoWindow
 								google.maps.event.addListener(marker, 'click', (function(markerElement, mapElement) {
 									if (markerElement.infoWindow.getContent().length === 0) return;
-									let gMarker, currentMarker = markerElement.gmarker, currentInfoWindow;
-									for (let k =0; k < markers.length; k++){
-										let markerIcon;
+									var gMarker, currentMarker = markerElement.gmarker, currentInfoWindow;
+									for (var k =0; k < markers.length; k++){
+										var markerIcon;
 										if (markers[k].markerElement === markerElement){
 											currentInfoWindow = markers[k].infoWindow;
 										}
@@ -861,7 +860,7 @@ export default function main() {
 										}
 										currentInfoWindow.close();
 									}
-								}).bind(window, markerElement, mapElement))
+								}).bind(this, markerElement, mapElement))
 							})
 						}
 					}
@@ -876,14 +875,14 @@ export default function main() {
 
 		// Add custom styling options for input[type="radio"]
 		if (plugins.radio.length) {
-			for (let i = 0; i < plugins.radio.length; i++) {
+			for (var i = 0; i < plugins.radio.length; i++) {
 				$(plugins.radio[i]).addClass("radio-custom").after("<span class='radio-custom-dummy'></span>")
 			}
 		}
 
 		// Add custom styling options for input[type="checkbox"]
 		if (plugins.checkbox.length) {
-			for (let i = 0; i < plugins.checkbox.length; i++) {
+			for (var i = 0; i < plugins.checkbox.length; i++) {
 				$(plugins.checkbox[i]).addClass("checkbox-custom").after("<span class='checkbox-custom-dummy'></span>")
 			}
 		}
@@ -898,14 +897,14 @@ export default function main() {
 
 		// RD Navbar
 		if (plugins.rdNavbar.length) {
-			let aliaces, i, j, len, value, values, responsiveNavbar;
+			var aliaces, i, j, len, value, values, responsiveNavbar;
 
 			aliaces = ["-", "-sm-", "-md-", "-lg-", "-xl-", "-xxl-"];
 			values = [0, 576, 768, 992, 1200, 1600];
 			responsiveNavbar = {};
 
-			for (let z = 0; z < plugins.rdNavbar.length; z++) {
-				let $rdNavbar = $(plugins.rdNavbar[z]);
+			for (var z = 0; z < plugins.rdNavbar.length; z++) {
+				var $rdNavbar = $(plugins.rdNavbar[z]);
 
 				for (i = j = 0, len = values.length; j < len; i = ++j) {
 					value = values[i];
@@ -928,7 +927,7 @@ export default function main() {
 					if (isNoviBuilder) {
 						responsiveNavbar[values[i]]['stickUp'] = false;
 					} else if ($rdNavbar.attr('data' + aliaces[i] + 'stick-up')) {
-						let isDemoNavbar = $rdNavbar.parents('.layout-navbar-demo').length;
+						var isDemoNavbar = $rdNavbar.parents('.layout-navbar-demo').length;
 						responsiveNavbar[values[i]]['stickUp'] = $rdNavbar.attr('data' + aliaces[i] + 'stick-up') === 'true' && !isDemoNavbar;
 					}
 
@@ -943,7 +942,7 @@ export default function main() {
 					responsive: responsiveNavbar,
 					callbacks: {
 						onStuck: function () {
-							let navbarSearch = window.$element.find('.rd-search input');
+							var navbarSearch = this.$element.find('.rd-search input');
 
 							if (navbarSearch) {
 								navbarSearch.val('').trigger('propertychange');
@@ -953,10 +952,10 @@ export default function main() {
 							return !isNoviBuilder;
 						},
 						onUnstuck: function () {
-							if (window.$clone === null)
+							if (this.$clone === null)
 								return;
 
-							let navbarSearch = window.$clone.find('.rd-search input');
+							var navbarSearch = this.$clone.find('.rd-search input');
 
 							if (navbarSearch) {
 								navbarSearch.val('').trigger('propertychange');
@@ -982,15 +981,15 @@ export default function main() {
 
 		// RD Search
 		if (plugins.search.length || plugins.searchResults) {
-			let handler = "bat/rd-search.php";
-			let defaultTemplate = '<h5 class="search-title"><a target="_top" href="#{href}" class="search-link">#{title}</a></h5>' +
+			var handler = "bat/rd-search.php";
+			var defaultTemplate = '<h5 class="search-title"><a target="_top" href="#{href}" class="search-link">#{title}</a></h5>' +
 				'<p>...#{token}...</p>' +
 				'<p class="match"><em>Terms matched: #{count} - URL: #{href}</em></p>';
-			let defaultFilter = '*.html';
+			var defaultFilter = '*.html';
 
 			if (plugins.search.length) {
-				for (let i = 0; i < plugins.search.length; i++) {
-					let searchItem = $(plugins.search[i]),
+				for (var i = 0; i < plugins.search.length; i++) {
+					var searchItem = $(plugins.search[i]),
 						options = {
 							element: searchItem,
 							filter: (searchItem.attr('data-search-filter')) ? searchItem.attr('data-search-filter') : defaultFilter,
@@ -1000,11 +999,11 @@ export default function main() {
 							current: 0, processed: 0, timer: {}
 						};
 
-					let $toggle = $('.rd-navbar-search-toggle');
+					var $toggle = $('.rd-navbar-search-toggle');
 					if ($toggle.length) {
 						$toggle.on('click', (function (searchItem) {
 							return function () {
-								if (!($(window).hasClass('active'))) {
+								if (!($(this).hasClass('active'))) {
 									searchItem.find('input').val('').trigger('propertychange');
 								}
 							}
@@ -1012,16 +1011,16 @@ export default function main() {
 					}
 
 					if (options.live) {
-						let clearHandler = false;
+						var clearHandler = false;
 
 						searchItem.find('input').on("input propertychange", $.proxy(function () {
-							window.term = window.element.find('input').val().trim();
-							window.spin = window.element.find('.input-group-addon');
+							this.term = this.element.find('input').val().trim();
+							this.spin = this.element.find('.input-group-addon');
 
-							clearTimeout(window.timer);
+							clearTimeout(this.timer);
 
-							if (window.term.length > 2) {
-								window.timer = setTimeout(liveSearch(window), 200);
+							if (this.term.length > 2) {
+								this.timer = setTimeout(liveSearch(this), 200);
 
 								if (clearHandler === false) {
 									clearHandler = true;
@@ -1033,25 +1032,25 @@ export default function main() {
 									})
 								}
 
-							} else if (window.term.length === 0) {
-								$('#' + window.live).addClass('cleared').html('');
+							} else if (this.term.length === 0) {
+								$('#' + this.live).addClass('cleared').html('');
 							}
-						}, options, window));
+						}, options, this));
 					}
 
 					searchItem.submit($.proxy(function () {
 						$('<input />').attr('type', 'hidden')
 							.attr('name', "filter")
-							.attr('value', window.filter)
-							.appendTo(window.element);
+							.attr('value', this.filter)
+							.appendTo(this.element);
 						return true;
-					}, options, window))
+					}, options, this))
 				}
 			}
 
 			if (plugins.searchResults.length) {
-				let regExp = /\?.*s=([^&]+)\&filter=([^&]+)/g;
-				let match = regExp.exec(location.search);
+				var regExp = /\?.*s=([^&]+)\&filter=([^&]+)/g;
+				var match = regExp.exec(location.search);
 
 				if (match !== null) {
 					$.get(handler, {
@@ -1069,11 +1068,11 @@ export default function main() {
 
 		// Add class in viewport
 		if (plugins.viewAnimate.length) {
-			for (let i = 0; i < plugins.viewAnimate.length; i++) {
-				let $view = $(plugins.viewAnimate[i]).not('.active');
+			for (var i = 0; i < plugins.viewAnimate.length; i++) {
+				var $view = $(plugins.viewAnimate[i]).not('.active');
 				$document.on("scroll", $.proxy(function () {
-					if (isScrolledIntoView(window)) {
-						window.addClass("active");
+					if (isScrolledIntoView(this)) {
+						this.addClass("active");
 					}
 				}, $view))
 					.trigger("scroll");
@@ -1087,9 +1086,9 @@ export default function main() {
 				watchSlidesProgress: true,
 				on: {
 					progress: function (progress) {
-						let swiper = window;
-						for (let i = 0; i < swiper.slides.length; i++) {
-							let slideProgress = swiper.slides[i].progress,
+						var swiper = this;
+						for (var i = 0; i < swiper.slides.length; i++) {
+							var slideProgress = swiper.slides[i].progress,
 									innerOffset = swiper.width * interleaveOffset,
 									innerTranslate = slideProgress * innerOffset;
 
@@ -1108,28 +1107,28 @@ export default function main() {
 					},
 
 					touchStart: function () {
-						let swiper = window;
-						for (let i = 0; i < swiper.slides.length; i++) {
+						var swiper = this;
+						for (var i = 0; i < swiper.slides.length; i++) {
 							swiper.slides[i].style.transition = "";
 						}
 					},
 
 					setTransition: function(speed) {
-						let swiper = window;
-						for (let i = 0; i < swiper.slides.length; i++) {
+						var swiper = this;
+						for (var i = 0; i < swiper.slides.length; i++) {
 							swiper.slides[i].style.transition = speed + "ms";
 							swiper.slides[i].querySelector(".slide-inner").style.transition =
 								speed + "ms";
 						}
 					},
 					slideNextTransitionStart: function () {
-						let swiper = window;
+						var swiper = this;
 						setTimeout(function () {
 							toggleSwiperCaptionAnimation(swiper);
 						}, 300);
 					},
 					slidePrevTransitionStart: function () {
-						let swiper = window;
+						var swiper = this;
 						setTimeout(function () {
 							toggleSwiperCaptionAnimation(swiper);
 						}, 300);
@@ -1140,20 +1139,20 @@ export default function main() {
 
 		// Swiper
 		if (plugins.swiper.length) {
-			for (let i = 0; i < plugins.swiper.length; i++) {
-				let s = $(plugins.swiper[i]),
+			for (var i = 0; i < plugins.swiper.length; i++) {
+				var s = $(plugins.swiper[i]),
 					pag = s.find(".swiper-pagination"),
 					next = s.find(".swiper-button-next"),
 					prev = s.find(".swiper-button-prev"),
 					bar = s.find(".swiper-scrollbar"),
 					swiperSlide = s.find(".swiper-slide");
 
-				for (let j = 0; j < swiperSlide.length; j++) {
-					let $window = $(swiperSlide[j]),
+				for (var j = 0; j < swiperSlide.length; j++) {
+					var $this = $(swiperSlide[j]),
 						url;
 
-					if (url = $window.attr("data-slide-bg")) {
-						$window.css({
+					if (url = $this.attr("data-slide-bg")) {
+						$this.css({
 							"background-image": "url(" + url + ")",
 							"background-size": "cover"
 						})
@@ -1165,7 +1164,7 @@ export default function main() {
 					.addClass("not-animated")
 					.end();
 
-				let swiperOptions = {
+				var swiperOptions = {
 					autoplay: s.attr('data-autoplay') ? s.attr('data-autoplay') === "false" ? undefined : s.attr('data-autoplay') : 5000,
 					direction: s.attr('data-direction') ? s.attr('data-direction') : "horizontal",
 					effect: s.attr('data-slide-effect') ? s.attr('data-slide-effect') : "slide",
@@ -1190,16 +1189,16 @@ export default function main() {
 					},
 					on: {
 						init: function () {
-							toggleSwiperInnerVideos(window);
-							toggleSwiperCaptionAnimation(window);
+							toggleSwiperInnerVideos(this);
+							toggleSwiperCaptionAnimation(this);
 						},
 
 						transitionStart: function () {
-							toggleSwiperInnerVideos(window);
+							toggleSwiperInnerVideos(this);
 						}
 						// TODO code review
 						// transitionEnd: function () {
-						// 	let $buttonsWinona = $(window.slides[window.activeIndex]).find('.button-winona');
+						// 	var $buttonsWinona = $(this.slides[this.activeIndex]).find('.button-winona');
 						// 	if ($buttonsWinona.length && !isNoviBuilder) {
 						// 		initWinonaButtons($buttonsWinona);
 						// 	}
@@ -1208,13 +1207,13 @@ export default function main() {
 				};
 
 				if (s.attr('data-custom-slide-effect') === 'inter-leave-effect') {
-					let interleaveOffset = s.attr('data-inter-leave-offset') ? s.attr('data-inter-leave-offset') : -.7;
+					var interleaveOffset = s.attr('data-inter-leave-offset') ? s.attr('data-inter-leave-offset') : -.7;
 					swiperOptions = $.extend(true, swiperOptions, makeInterLeaveEffectOptions(interleaveOffset));
 				}
 
 				s = new Swiper(plugins.swiper[i], swiperOptions);
 
-				let container = $(pag);
+				var container = $(pag);
 				if (container.hasClass('swiper-pagination-marked')) {
 					container.append('<span class="swiper-pagination-mark"></span>');
 				}
@@ -1223,8 +1222,8 @@ export default function main() {
 
 		// Owl carousel
 		if (plugins.owl.length) {
-			for (let i = 0; i < plugins.owl.length; i++) {
-				let c = $(plugins.owl[i]);
+			for (var i = 0; i < plugins.owl.length; i++) {
+				var c = $(plugins.owl[i]);
 				plugins.owl[i].owl = c;
 
 				initOwlCarousel(c);
@@ -1233,9 +1232,9 @@ export default function main() {
 
 		// Isotope
 		if (plugins.isotope.length) {
-			let isogroup = [];
-			for (let i = 0; i < plugins.isotope.length; i++) {
-				let isotopeItem = plugins.isotope[i],
+			var isogroup = [];
+			for (var i = 0; i < plugins.isotope.length; i++) {
+				var isotopeItem = plugins.isotope[i],
 					isotopeInitAttrs = {
 						itemSelector: '.isotope-item',
 						layoutMode: isotopeItem.getAttribute('data-isotope-layout') ? isotopeItem.getAttribute('data-isotope-layout') : 'masonry',
@@ -1252,31 +1251,31 @@ export default function main() {
 					};
 				}
 
-				let iso = new Isotope(isotopeItem, isotopeInitAttrs);
+				var iso = new Isotope(isotopeItem, isotopeInitAttrs);
 				isogroup.push(iso);
 			}
 
 
 			setTimeout(function () {
-				for (let i = 0; i < isogroup.length; i++) {
+				for (var i = 0; i < isogroup.length; i++) {
 					isogroup[i].element.className += " isotope--loaded";
 					isogroup[i].layout();
 				}
 			}, 200);
 
-			let resizeTimout;
+			var resizeTimout;
 
 			$("[data-isotope-filter]").on("click", function (e) {
 				e.preventDefault();
-				let filter = $(window);
+				var filter = $(this);
 				clearTimeout(resizeTimout);
 				filter.parents(".isotope-filters").find('.active').removeClass("active");
 				filter.addClass("active");
-				let iso = $('.isotope[data-isotope-group="' + window.getAttribute("data-isotope-group") + '"]'),
+				var iso = $('.isotope[data-isotope-group="' + this.getAttribute("data-isotope-group") + '"]'),
 					isotopeAttrs = {
 						itemSelector: '.isotope-item',
 						layoutMode: iso.attr('data-isotope-layout') ? iso.attr('data-isotope-layout') : 'masonry',
-						filter: window.getAttribute("data-isotope-filter") === '*' ? '*' : '[data-filter*="' + window.getAttribute("data-isotope-filter") + '"]'
+						filter: this.getAttribute("data-isotope-filter") === '*' ? '*' : '[data-filter*="' + this.getAttribute("data-isotope-filter") + '"]'
 					};
 				if (iso.attr('data-column-width')) {
 					isotopeAttrs.masonry = {
@@ -1289,7 +1288,7 @@ export default function main() {
 				}
 				iso.isotope(isotopeAttrs);
 
-				let $iso = $(iso);
+				var $iso = $(iso);
 				if($iso.hasClass('hoverdir')) {
 					initHoverDir($iso.find('.hoverdir-item'));
 				}
@@ -1315,7 +1314,7 @@ export default function main() {
 		// MailChimp Ajax subscription
 		if (plugins.mailchimp.length) {
 			for (i = 0; i < plugins.mailchimp.length; i++) {
-				let $mailchimpItem = $(plugins.mailchimp[i]),
+				var $mailchimpItem = $(plugins.mailchimp[i]),
 					$email = $mailchimpItem.find('input[type="email"]');
 
 				// Required by MailChimp
@@ -1325,12 +1324,12 @@ export default function main() {
 				$mailchimpItem.on('submit', $.proxy(function ($email, event) {
 					event.preventDefault();
 
-					let $window = window;
+					var $this = this;
 
-					let data = {},
-						url = $window.attr('action').replace('/post?', '/post-json?').concat('&c=?'),
-						dataArray = $window.serializeArray(),
-						$output = $("#" + $window.attr("data-form-output"));
+					var data = {},
+						url = $this.attr('action').replace('/post?', '/post-json?').concat('&c=?'),
+						dataArray = $this.serializeArray(),
+						$output = $("#" + $this.attr("data-form-output"));
 
 					for (i = 0; i < dataArray.length; i++) {
 						data[dataArray[i].name] = dataArray[i].value;
@@ -1350,7 +1349,7 @@ export default function main() {
 						success: function (resp) {
 							$output.html(resp.msg).addClass('active');
 							$email[0].value = '';
-							let $label = $('[for="' + $email.attr('id') + '"]');
+							var $label = $('[for="' + $email.attr('id') + '"]');
 							if ($label.length) $label.removeClass('focus not-empty');
 
 							setTimeout(function () {
@@ -1358,18 +1357,18 @@ export default function main() {
 							}, 6000);
 						},
 						beforeSend: function (data) {
-							let isNoviBuilder = window.xMode;
+							var isNoviBuilder = window.xMode;
 
-							let isValidated = (function () {
-								let results, errors = 0;
-								let elements = $window.find('[data-constraints]');
-								let captcha = null;
+							var isValidated = (function () {
+								var results, errors = 0;
+								var elements = $this.find('[data-constraints]');
+								var captcha = null;
 								if (elements.length) {
-									for (let j = 0; j < elements.length; j++) {
+									for (var j = 0; j < elements.length; j++) {
 
-										let $input = $(elements[j]);
+										var $input = $(elements[j]);
 										if ((results = $input.regula('validate')).length) {
-											for (let k = 0; k < results.length; k++) {
+											for (var k = 0; k < results.length; k++) {
 												errors++;
 												$input.siblings(".form-validation").text(results[k].message).parent().addClass("has-error");
 											}
@@ -1405,14 +1404,14 @@ export default function main() {
 		// Campaign Monitor ajax subscription
 		if (plugins.campaignMonitor.length) {
 			for (i = 0; i < plugins.campaignMonitor.length; i++) {
-				let $campaignItem = $(plugins.campaignMonitor[i]);
+				var $campaignItem = $(plugins.campaignMonitor[i]);
 
 				$campaignItem.on('submit', $.proxy(function (e) {
-					let data = {},
-						url = window.attr('action'),
-						dataArray = window.serializeArray(),
+					var data = {},
+						url = this.attr('action'),
+						dataArray = this.serializeArray(),
 						$output = $("#" + plugins.campaignMonitor.attr("data-form-output")),
-						$window = $(window);
+						$this = $(this);
 
 					for (i = 0; i < dataArray.length; i++) {
 						data[dataArray[i].name] = dataArray[i].value;
@@ -1438,7 +1437,7 @@ export default function main() {
 						},
 						beforeSend: function (data) {
 							// Stop request if builder or inputs are invalide
-							if (isNoviBuilder || !isValidated($window.find('[data-constraints]')))
+							if (isNoviBuilder || !isValidated($this.find('[data-constraints]')))
 								return false;
 
 							$output.html('Submitting...').addClass('active');
@@ -1446,10 +1445,10 @@ export default function main() {
 					});
 
 					// Clear inputs after submit
-					let inputs = $window[0].getElementsByTagName('input');
-					for (let i = 0; i < inputs.length; i++) {
+					var inputs = $this[0].getElementsByTagName('input');
+					for (var i = 0; i < inputs.length; i++) {
 						inputs[i].value = '';
-						let label = document.querySelector('[for="' + inputs[i].getAttribute('id') + '"]');
+						var label = document.querySelector('[for="' + inputs[i].getAttribute('id') + '"]');
 						if (label) label.classList.remove('focus', 'not-empty');
 					}
 
@@ -1460,7 +1459,7 @@ export default function main() {
 
 		// RD Mailform
 		if (plugins.rdMailForm.length) {
-			let i, j, k,
+			var i, j, k,
 				msg = {
 					'MF000': 'Successfully sent!',
 					'MF001': 'Recipients are not set!',
@@ -1472,7 +1471,7 @@ export default function main() {
 				};
 
 			for (i = 0; i < plugins.rdMailForm.length; i++) {
-				let $form = $(plugins.rdMailForm[i]),
+				var $form = $(plugins.rdMailForm[i]),
 					formHasCaptcha = false;
 
 				$form.attr('novalidate', 'novalidate').ajaxForm({
@@ -1484,7 +1483,7 @@ export default function main() {
 						if (isNoviBuilder)
 							return;
 
-						let form = $(plugins.rdMailForm[window.extraData.counter]),
+						var form = $(plugins.rdMailForm[this.extraData.counter]),
 							inputs = form.find("[data-constraints]"),
 							output = $("#" + form.attr("data-form-output")),
 							captcha = form.find('.recaptcha'),
@@ -1496,7 +1495,7 @@ export default function main() {
 
 							// veify reCaptcha
 							if (captcha.length) {
-								let captchaToken = captcha.find('.g-recaptcha-response').val(),
+								var captchaToken = captcha.find('.g-recaptcha-response').val(),
 									captchaMsg = {
 										'CPT001': 'Please, setup you "site key" and "secret key" of reCaptcha',
 										'CPT002': 'Something wrong with google reCaptcha'
@@ -1547,8 +1546,8 @@ export default function main() {
 						if (isNoviBuilder)
 							return;
 
-						let output = $("#" + $(plugins.rdMailForm[window.extraData.counter]).attr("data-form-output")),
-							form = $(plugins.rdMailForm[window.extraData.counter]);
+						var output = $("#" + $(plugins.rdMailForm[this.extraData.counter]).attr("data-form-output")),
+							form = $(plugins.rdMailForm[this.extraData.counter]);
 
 						output.text(msg[result]);
 						form.removeClass('form-in-process');
@@ -1561,7 +1560,7 @@ export default function main() {
 						if (isNoviBuilder)
 							return;
 
-						let form = $(plugins.rdMailForm[window.extraData.counter]),
+						var form = $(plugins.rdMailForm[this.extraData.counter]),
 							output = $("#" + form.attr("data-form-output")),
 							select = form.find('select');
 
@@ -1609,7 +1608,7 @@ export default function main() {
 
 		// lightGallery
 		if (plugins.lightGallery.length) {
-			for (let i = 0; i < plugins.lightGallery.length; i++) {
+			for (var i = 0; i < plugins.lightGallery.length; i++) {
 				initLightGallery(plugins.lightGallery[i]);
 			}
 		}
@@ -1617,9 +1616,9 @@ export default function main() {
 		// lightGallery item
 		if (plugins.lightGalleryItem.length) {
 			// Filter carousel items
-			let notCarouselItems = [];
+			var notCarouselItems = [];
 
-			for (let z = 0; z < plugins.lightGalleryItem.length; z++) {
+			for (var z = 0; z < plugins.lightGalleryItem.length; z++) {
 				if (!$(plugins.lightGalleryItem[z]).parents('.owl-carousel').length &&
 					!$(plugins.lightGalleryItem[z]).parents('.swiper-slider').length &&
 					!$(plugins.lightGalleryItem[z]).parents('.slick-slider').length) {
@@ -1629,32 +1628,32 @@ export default function main() {
 
 			plugins.lightGalleryItem = notCarouselItems;
 
-			for (let i = 0; i < plugins.lightGalleryItem.length; i++) {
+			for (var i = 0; i < plugins.lightGalleryItem.length; i++) {
 				initLightGalleryItem(plugins.lightGalleryItem[i]);
 			}
 		}
 
 		// Dynamic lightGallery
 		if (plugins.lightDynamicGalleryItem.length) {
-			for (let i = 0; i < plugins.lightDynamicGalleryItem.length; i++) {
+			for (var i = 0; i < plugins.lightDynamicGalleryItem.length; i++) {
 				initDynamicLightGallery(plugins.lightDynamicGalleryItem[i]);
 			}
 		}
 
 		// Custom Toggles
 		if (plugins.customToggle.length) {
-			for (let i = 0; i < plugins.customToggle.length; i++) {
-				let $window = $(plugins.customToggle[i]);
+			for (var i = 0; i < plugins.customToggle.length; i++) {
+				var $this = $(plugins.customToggle[i]);
 
-				$window.on('click', $.proxy(function (event) {
+				$this.on('click', $.proxy(function (event) {
 					event.preventDefault();
 
-					let $ctx = $(window);
-					$($ctx.attr('data-custom-toggle')).add(window).toggleClass('active');
-				}, $window));
+					var $ctx = $(this);
+					$($ctx.attr('data-custom-toggle')).add(this).toggleClass('active');
+				}, $this));
 
-				if ($window.attr("data-custom-toggle-hide-on-blur") === "true") {
-					$body.on("click", $window, function (e) {
+				if ($this.attr("data-custom-toggle-hide-on-blur") === "true") {
+					$body.on("click", $this, function (e) {
 						if (e.target !== e.data[0]
 							&& $(e.data.attr('data-custom-toggle')).find($(e.target)).length
 							&& e.data.find($(e.target)).length === 0) {
@@ -1663,8 +1662,8 @@ export default function main() {
 					})
 				}
 
-				if ($window.attr("data-custom-toggle-disable-on-blur") === "true") {
-					$body.on("click", $window, function (e) {
+				if ($this.attr("data-custom-toggle-disable-on-blur") === "true") {
+					$body.on("click", $this, function (e) {
 						if (e.target !== e.data[0] && $(e.data.attr('data-custom-toggle')).find($(e.target)).length === 0 && e.data.find($(e.target)).length === 0) {
 							$(e.data.attr('data-custom-toggle')).add(e.data[0]).removeClass('active');
 						}
@@ -1675,24 +1674,24 @@ export default function main() {
 
 		// jQuery Count To
 		if (plugins.counter.length) {
-			for (let i = 0; i < plugins.counter.length; i++) {
-				let $counterNotAnimated = $(plugins.counter[i]).not('.animated');
+			for (var i = 0; i < plugins.counter.length; i++) {
+				var $counterNotAnimated = $(plugins.counter[i]).not('.animated');
 				$document.on("scroll", $.proxy(function () {
-					let $window = window;
+					var $this = this;
 
-					if ((!$window.hasClass("animated")) && (isScrolledIntoView($window))) {
-						$window.countTo({
+					if ((!$this.hasClass("animated")) && (isScrolledIntoView($this))) {
+						$this.countTo({
 							refreshInterval: 40,
 							from: 0,
-							to: parseInt($window.text(), 10),
-							speed: $window.attr("data-speed") || 1000,
+							to: parseInt($this.text(), 10),
+							speed: $this.attr("data-speed") || 1000,
 							formatter: function (value, options) {
 								value = value.toFixed(options.decimals);
 								if (value > 10000) {
-									let newValue = "",
+									var newValue = "",
 										stringValue = value.toString();
 
-									for (let k = stringValue.length; k >= 0; k -= 3) {
+									for (var k = stringValue.length; k >= 0; k -= 3) {
 										if (k <= 3) {
 											newValue = ' ' + stringValue.slice(0, k) + newValue;
 										} else {
@@ -1707,7 +1706,7 @@ export default function main() {
 								}
 							}
 						});
-						$window.addClass('animated');
+						$this.addClass('animated');
 					}
 				}, $counterNotAnimated))
 					.trigger("scroll");
@@ -1716,8 +1715,8 @@ export default function main() {
 
 		// TimeCircles
 		if (plugins.dateCountdown.length) {
-			for ( let i = 0; i < plugins.dateCountdown.length; i++ ) {
-				let
+			for ( var i = 0; i < plugins.dateCountdown.length; i++ ) {
+				var
 						dateCountdownItem = $( plugins.dateCountdown[ i ] ),
 						countdownRender = function () {
 							dateCountdownItem.TimeCircles( {
@@ -1762,13 +1761,13 @@ export default function main() {
 
 		// Linear Progress bar
 		if ( plugins.progressLinear.length ) {
-			for ( let i = 0; i < plugins.progressLinear.length; i++) {
-				let
+			for ( var i = 0; i < plugins.progressLinear.length; i++) {
+				var
 						bar = $(plugins.progressLinear[i]),
 						initProgress = function() {
-							let
-									bar = $(window),
-									end = parseInt($(window).find('.progress-value').text(), 10);
+							var
+									bar = $(this),
+									end = parseInt($(this).find('.progress-value').text(), 10);
 
 							if ( !bar.hasClass( "animated-first" ) && isScrolledIntoView( bar ) ) {
 								bar.find('.progress-bar-linear').css({width: end + '%'});
@@ -1800,8 +1799,8 @@ export default function main() {
 					}, 500);
 				});
 			} else {
-				for (let i = 0; i < plugins.materialParallax.length; i++) {
-					let parallax = $(plugins.materialParallax[i]),
+				for (var i = 0; i < plugins.materialParallax.length; i++) {
+					var parallax = $(plugins.materialParallax[i]),
 						imgPath = parallax.data("parallax-img");
 
 					parallax.css({
@@ -1814,9 +1813,9 @@ export default function main() {
 
 		// Vide
 		if (plugins.vide.length) {
-			for (let i = 0; i < plugins.vide.length; i++) {
+			for (var i = 0; i < plugins.vide.length; i++) {
 
-				let $element = $(plugins.vide[i]),
+				var $element = $(plugins.vide[i]),
 					videObj = $element.data("vide").getVideoObject();
 
 				if (isNoviBuilder || !isScrolledIntoView($element)) {
@@ -1840,8 +1839,8 @@ export default function main() {
 		}
 
 		function initWinonaButtons(buttons) {
-			for (let i = 0; i < buttons.length; i++) {
-				let $button = $(buttons[i]),
+			for (var i = 0; i < buttons.length; i++) {
+				var $button = $(buttons[i]),
 					innerContent = $button.html();
 
 				$button.html('');
@@ -1855,8 +1854,8 @@ export default function main() {
 		 * @description  Enable Slick carousel plugin
 		 */
 		if (plugins.slick.length) {
-			for (let i = 0; i < plugins.slick.length; i++) {
-				let $slickItem = $(plugins.slick[i]);
+			for (var i = 0; i < plugins.slick.length; i++) {
+				var $slickItem = $(plugins.slick[i]);
 
 				$slickItem.slick({
 					slidesToScroll: parseInt($slickItem.attr('data-slide-to-scroll'), 10) || 1,
@@ -1906,8 +1905,8 @@ export default function main() {
 					]
 				})
 					.on('afterChange', function (event, slick, currentSlide, nextSlide) {
-						let $window = $(window),
-							childCarousel = $window.attr('data-child');
+						var $this = $(this),
+							childCarousel = $this.attr('data-child');
 
 						if (childCarousel) {
 							$(childCarousel + ' .slick-slide').removeClass('slick-current');
@@ -1920,17 +1919,17 @@ export default function main() {
 
 		// Custom Video Overlay
 		if (plugins.videoOverlay.length) {
-			for (let i = 0; i < plugins.videoOverlay.length; i++) {
-				let overlay = $(plugins.videoOverlay[i]);
+			for (var i = 0; i < plugins.videoOverlay.length; i++) {
+				var overlay = $(plugins.videoOverlay[i]);
 
 				if (overlay) {
 					overlay.css({'opacity': '1'});
 					overlay.on('click', function () {
-						$(window).animate({
+						$(this).animate({
 								opacity: 0
 							},
 							function () {
-								window.style.display = 'none';
+								this.style.display = 'none';
 							}
 						);
 					});
@@ -1940,7 +1939,7 @@ export default function main() {
 
 
 		// D3/C3 Charts
-		let lineChart,
+		var lineChart,
 			lineChartObject = {
 				bindto: '#line-chart',
 				color: {
@@ -2050,8 +2049,8 @@ export default function main() {
 
 		// Select2
 		if (plugins.selectFilter.length) {
-			for (let i = 0; i < plugins.selectFilter.length; i++) {
-				let select = $(plugins.selectFilter[i]);
+			for (var i = 0; i < plugins.selectFilter.length; i++) {
+				var select = $(plugins.selectFilter[i]);
 
 				select.select2({
 					placeholder: select.attr("data-placeholder") ? select.attr("data-placeholder") : false,
@@ -2081,9 +2080,9 @@ export default function main() {
 			plugins.rdRange.RDRange({
 				callbacks: {
 					onChange: function () {
-						let $inp = $('.rd-range-input-value-1, .rd-range-input-value-2,.rd-range-input-value-3,.rd-range-input-value-4');
+						var $inp = $('.rd-range-input-value-1, .rd-range-input-value-2,.rd-range-input-value-3,.rd-range-input-value-4');
 
-						for (let z = 0; z < $inp.length; z++) {
+						for (var z = 0; z < $inp.length; z++) {
 							$inp[z].style.width = ($inp[z].value.length) * 1.15 + 'ch';
 						}
 					},
@@ -2091,7 +2090,4 @@ export default function main() {
 			});
 		}
 	});
-
-}
-
-main();
+}());

@@ -21,6 +21,7 @@
     "get-size": "^3.0.0",
     "global": "^4.4.0",
     "http-server": "^14.1.1",
+    "isotope": "^1.0.0-alpha.3",
     "jquery": "^3.7.0",
     "masonry-layout": "^4.2.2",
     "outlayer": "^2.1.1",
