@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "parcel build index.html",
     "serve": "vite preview"
   },
   "dependencies": {
@@ -16,11 +16,15 @@
     "desandro-matches-selector": "^2.0.2",
     "doc-ready": "^1.0.4",
     "eventie": "^1.0.6",
+    "express": "^4.18.2",
     "fizzy-ui-utils": "^3.0.0",
     "get-size": "^3.0.0",
+    "global": "^4.4.0",
+    "http-server": "^14.1.1",
     "jquery": "^3.7.0",
     "masonry-layout": "^4.2.2",
     "outlayer": "^2.1.1",
+    "parcel-bundler": "^1.12.5",
     "wolfy87-eventemitter": "^5.2.9"
   }
 }
