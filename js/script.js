@@ -1,16 +1,16 @@
-import $ from 'jquery';
-window.$ = window.jQuery = $;
-import 'jquery-migrate';
-import 'js-cookie';
-import 'jquery.easing';
-import 'jquery-touchswipe';
-import 'bootstrap';
-import 'jquery-form';
-import 'owl.carousel';
-import 'jquery-countto';
-// import 'jquery.pagepiling';
-import 'slick-carousel';
-import 'vide';
+// import $ from 'jquery';
+// window.$ = window.jQuery = $;
+// import 'jquery-migrate';
+// import 'js-cookie';
+// import 'jquery.easing';
+// import 'jquery-touchswipe';
+// import 'bootstrap';
+// import 'jquery-form';
+// import 'owl.carousel';
+// import 'jquery-countto';
+// // import 'jquery.pagepiling';
+// import 'slick-carousel';
+// import 'vide';
 
 function main () {
 	// Global variables
