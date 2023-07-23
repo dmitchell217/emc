@@ -2,7 +2,7 @@
 (function () {
 
 	// Global variables
-	console.log($.fn.jquery);
+	var $ = require('./core.min.js');
 	var userAgent = navigator.userAgent.toLowerCase(),
 		initialDate = new Date(),
 
@@ -73,9 +73,9 @@
 		}, 2000);  // Delay of 2 seconds (2000 milliseconds)
 	
 		// Page loader & Page transition
-		// if (plugins.preloader.length && !isNoviBuilder) {
-		// 	// ... rest of your code ...
-		// }
+		if (plugins.preloader.length && !isNoviBuilder) {
+			// ... rest of your code ...
+		}
 	});
 
 	// Initialize scripts that require a finished document
