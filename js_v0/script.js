@@ -2,7 +2,6 @@
 (function () {
 
 	// Global variables
-	var $ = require('jquery');
 	var userAgent = navigator.userAgent.toLowerCase(),
 		initialDate = new Date(),
 
@@ -22,11 +21,11 @@
 			bootstrapTooltip: $("[data-toggle='tooltip']"),
 			bootstrapModalDialog: $('.modal'),
 			bootstrapTabs: $(".tabs-custom"),
-			rdNavbar: $("#rd-navbar"),
+			rdNavbar: $(".rd-navbar"),
 			materialParallax: $(".parallax-container"),
 			maps: $(".google-map-container"),
 			rdMailForm: $(".rd-mailform"),
-			rdInputLabel: $(".rd-navbar-search-form-input"),
+			rdInputLabel: $(".form-label"),
 			regula: $("[data-constraints]"),
 			wow: $(".wow"),
 			owl: $(".owl-carousel"),
@@ -63,23 +62,30 @@
 
 	// Initialize scripts that require a loaded page
 	$window.on('load', function () {
-		// Remove the 'loaded' class immediately when the window loads
-		plugins.preloader.removeClass('loaded');
-	
-		// Then, after a delay, add the 'loaded' class back and set windowReady to true
-		setTimeout(function () {
-			plugins.preloader.addClass('loaded');
-			windowReady = true;
-			console.log($.fn.RDInputLabel)
-			if (plugins.rdInputLabel.length) {
-				plugins.rdInputLabel.RDInputLabel();
-			}
-		}, 2000);  // Delay of 2 seconds (2000 milliseconds)
-	
 		// Page loader & Page transition
-		// if (plugins.preloader.length && !isNoviBuilder) {
-		// 	// ... rest of your code ...
-		// }
+		if (plugins.preloader.length && !isNoviBuilder) {
+			pageTransition({
+				target: document.querySelector('.page'),
+				delay: 0,
+				duration: pageTransitionAnimationDuration,
+				classActive: 'animated',
+				conditions: function (event, link) {
+					return
+						!/(\#|callto:|tel:|mailto:|:\/\/)/.test(link)
+						&& !event.currentTarget.hasAttribute('data-lightgallery')
+						&& event.currentTarget.getAttribute('href') !== 'javascript:void(0);';
+				},
+				onTransitionStart: function ( options ) {
+					setTimeout( function () {
+						plugins.preloader.removeClass('loaded');
+					}, options.duration * .75 );
+				},
+				onReady: function () {
+					plugins.preloader.addClass('loaded');
+					windowReady = true;
+				}
+			});
+		}
 	});
 
 	// Initialize scripts that require a finished document
@@ -929,37 +935,35 @@
 					}
 				}
 
-				if ($rdNavbar && $rdNavbar.rdNavbar) {
-					$rdNavbar.rdNavbar({
-						anchorNav: !isNoviBuilder,
-						stickUpClone: ($rdNavbar.attr("data-stick-up-clone") && !isNoviBuilder) ? $rdNavbar.attr("data-stick-up-clone") === 'true' : false,
-						responsive: responsiveNavbar,
-						callbacks: {
-							onStuck: function () {
-								var navbarSearch = this.$element.find('.rd-search input');
+				$rdNavbar.RDNavbar({
+					anchorNav: !isNoviBuilder,
+					stickUpClone: ($rdNavbar.attr("data-stick-up-clone") && !isNoviBuilder) ? $rdNavbar.attr("data-stick-up-clone") === 'true' : false,
+					responsive: responsiveNavbar,
+					callbacks: {
+						onStuck: function () {
+							var navbarSearch = this.$element.find('.rd-search input');
 
-								if (navbarSearch) {
-									navbarSearch.val('').trigger('propertychange');
-								}
-							},
-							onDropdownOver: function () {
-								return !isNoviBuilder;
-							},
-							onUnstuck: function () {
-								if (this.$clone === null)
-									return;
-
-								var navbarSearch = this.$clone.find('.rd-search input');
-
-								if (navbarSearch) {
-									navbarSearch.val('').trigger('propertychange');
-									navbarSearch.trigger('blur');
-								}
-
+							if (navbarSearch) {
+								navbarSearch.val('').trigger('propertychange');
 							}
+						},
+						onDropdownOver: function () {
+							return !isNoviBuilder;
+						},
+						onUnstuck: function () {
+							if (this.$clone === null)
+								return;
+
+							var navbarSearch = this.$clone.find('.rd-search input');
+
+							if (navbarSearch) {
+								navbarSearch.val('').trigger('propertychange');
+								navbarSearch.trigger('blur');
+							}
+
 						}
-					});
-				}
+					}
+				});
 
 
 				if ($rdNavbar.attr("data-body-class")) {
@@ -970,7 +974,6 @@
 		}
 
 		// RD Input Label
-		console.log($.fn.RDInputLabel)
 		if (plugins.rdInputLabel.length) {
 			plugins.rdInputLabel.RDInputLabel();
 		}
