@@ -63,24 +63,18 @@
 
 	// Initialize scripts that require a loaded page
 	$window.on('load', function () {
+		// Remove the 'loaded' class immediately when the window loads
 		plugins.preloader.removeClass('loaded');
-		plugins.preloader.addClass('loaded');
-		windowReady = true;
+	
+		// Then, after a delay, add the 'loaded' class back and set windowReady to true
+		setTimeout(function () {
+			plugins.preloader.addClass('loaded');
+			windowReady = true;
+		}, 2000);  // Delay of 2 seconds (2000 milliseconds)
+	
 		// Page loader & Page transition
 		// if (plugins.preloader.length && !isNoviBuilder) {
-		// 	pageTransition({
-		// 		target: document.querySelector('.page'),
-		// 		delay: 0,
-		// 		duration: pageTransitionAnimationDuration,
-		// 		classActive: 'animated',
-		// 		conditions: function (event, link) {
-		// 			return
-		// 				!/(\#|callto:|tel:|mailto:|:\/\/)/.test(link)
-		// 				&& !event.currentTarget.hasAttribute('data-lightgallery')
-		// 				&& event.currentTarget.getAttribute('href') !== 'javascript:void(0);';
-		// 		},
-
-		// 	});
+		// 	// ... rest of your code ...
 		// }
 	});
 
