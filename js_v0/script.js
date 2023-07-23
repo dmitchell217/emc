@@ -22,11 +22,11 @@
 			bootstrapTooltip: $("[data-toggle='tooltip']"),
 			bootstrapModalDialog: $('.modal'),
 			bootstrapTabs: $(".tabs-custom"),
-			rdNavbar: $(".rd-navbar"),
+			rdNavbar: $("#rd-navbar"),
 			materialParallax: $(".parallax-container"),
 			maps: $(".google-map-container"),
 			rdMailForm: $(".rd-mailform"),
-			rdInputLabel: $(".form-label"),
+			rdInputLabel: $(".rd-navbar-search-form-input"),
 			regula: $("[data-constraints]"),
 			wow: $(".wow"),
 			owl: $(".owl-carousel"),
@@ -972,6 +972,7 @@
 		}
 
 		// RD Input Label
+		console.log($.fn.RDInputLabel)
 		if (plugins.rdInputLabel.length) {
 			plugins.rdInputLabel.RDInputLabel();
 		}
