@@ -9600,7 +9600,7 @@ html.tablet .ui-to-top {
 	padding: 16px 27px;
 	margin-top: 22px;
 	margin-left: -27px;
-	visibility: hidden;
+	/* visibility: hidden; */
 	opacity: 0;
 	text-align: left;
 	box-shadow: 0 5px 10px 1px rgba(20, 20, 28, 0.3);

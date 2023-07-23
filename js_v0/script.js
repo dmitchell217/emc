@@ -70,6 +70,10 @@
 		setTimeout(function () {
 			plugins.preloader.addClass('loaded');
 			windowReady = true;
+			console.log($.fn.RDInputLabel)
+			if (plugins.rdInputLabel.length) {
+				plugins.rdInputLabel.RDInputLabel();
+			}
 		}, 2000);  // Delay of 2 seconds (2000 milliseconds)
 	
 		// Page loader & Page transition
