@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');  // You missed this import
 const bodyParser = require('body-parser');
 const nodeMailer = require('nodemailer');
 const app = express();
@@ -6,26 +7,25 @@ const port = process.env.PORT || 4000;
 
 app.use(express.static('src'));
 
-// Catch-all route to handle requests without .html extension
-// app.get('*', (req, res, next) => {
-//   // Check if the request path has an extension (e.g. .css, .js)
-//   if (path.extname(req.path)) {
-//       return next(); // If it has an extension, skip and let express.static handle it
-//   }
-
-//   console.log('Request path:', req.path, req);
-//   // Otherwise, try appending .html and serving that file
-//   const filePath = path.join(__dirname, 'src', req.path + '.html');
-//   res.sendFile(filePath, (err) => {
-//       // If there's an error (like file not found), send a 404
-//       if (err) {
-//           res.status(404).send('Not Found');
-//       }
-//   });
-// });
-
 app.get('/simulate-error', (req, res, next) => {
   throw new Error('Simulated server error');
+});
+
+// Catch-all route to handle requests without .html extension
+app.get('*', (req, res, next) => {
+  // Check if the request path has an extension (e.g. .css, .js)
+  if (path.extname(req.path)) {
+      return next(); // If it has an extension, skip and let express.static handle it
+  }
+
+  // Otherwise, try appending .html and serving that file
+  const filePath = path.join(__dirname, 'src', req.path + '.html');
+  res.sendFile(filePath, (err) => {
+      // If there's an error (like file not found), send a 404
+      if (err) {
+          res.status(404).send('Not Found');
+      }
+  });
 });
 
 // 404 Not Found Middleware

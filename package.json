@@ -1,5 +1,6 @@
 {
   "name": "emc",
+  "author": "David Mitchell",
   "version": "1.0.0",
   "license": "MIT",
   "devDependencies": {
