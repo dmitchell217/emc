@@ -11028,7 +11028,8 @@ html.rd-navbar-fixed-linked .page {
 }
 
 .rd-navbar-corporate.rd-navbar-static .rd-navbar-main-outer {
-	background: rgba(51, 51, 51, 0.1);
+	/* background: rgba(51, 51, 51, 0.1); */
+	background: black;
 	position: absolute;
 	top: 100%;
 	z-index: 10;
