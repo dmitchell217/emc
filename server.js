@@ -13,6 +13,9 @@ app.get('/simulate-error', (req, res, next) => {
 
 // Catch-all route to handle requests without .html extension
 app.get('*', (req, res, next) => {
+  // temp redirect 
+  res.status(404).send('Not Found');
+  
   // Check if the request path has an extension (e.g. .css, .js)
   if (path.extname(req.path)) {
       return next(); // If it has an extension, skip and let express.static handle it
